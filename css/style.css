@@ -1188,6 +1188,14 @@ html, body {
     overflow-x: hidden;
 }
 
+html {
+    font-size: 15px;
+}
+
+body {
+    font-size: 1rem;
+}
+
 img, svg, video, iframe {
     max-width: 100%;
     height: auto;
@@ -1362,7 +1370,7 @@ nav.navbar.navbar-expand-lg.navbar-light.py-lg-0.px-lg-5.wow.fadeIn
 
     color:#d7cbb9;
 
-    padding:90px 0 35px;
+    padding:3cqmax 0 20px;
 
     position:relative;
 
@@ -1599,7 +1607,7 @@ nav.navbar.navbar-expand-lg.navbar-light.py-lg-0.px-lg-5.wow.fadeIn
 
     border-color:rgba(255,255,255,.08);
 
-    margin:55px 0 28px;
+    margin:30px 0 20px;
 
 }
 
@@ -4449,7 +4457,7 @@ Hero Card
 
 .shola-why-hero{
 
-    margin-top:60px;
+    margin-top:25px;
 
     padding:45px;
 
@@ -7289,7 +7297,7 @@ Tabs
 
     gap:14px;
 
-    margin:60px 0;
+    margin:20px 0;
 
 }
 
@@ -7722,3 +7730,654 @@ justify-content:center;
 
 }
 
+/*==========================
+Section spacing adjustments
+===========================*/
+.page-header,
+.page-header1,
+.shola-explore,
+.shola-why,
+.gh-art-section,
+.gh-story,
+.shola-about,
+.shola-showcase,
+.shola-product,
+.shola-contact,
+.shola-wholesale,
+.shola-hampers,
+.shola-gallery,
+.marketplaces,
+.category-section {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+}
+
+.shola-why-card,
+.shola-collection-card,
+.shola-product-card,
+.gh-art-card,
+.gh-story-card,
+.shola-feature-card,
+.shola-contact-card,
+.shola-hamper-info {
+    padding: 24px !important;
+}
+
+@media (max-width: 991.98px) {
+    .page-header,
+    .page-header1,
+    .shola-explore,
+    .shola-why,
+    .gh-art-section,
+    .gh-story,
+    .shola-about,
+    .shola-showcase,
+    .shola-product,
+    .shola-contact,
+    .shola-wholesale,
+    .shola-hampers,
+    .shola-gallery,
+    .marketplaces,
+    .category-section {
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-header,
+    .page-header1,
+    .shola-explore,
+    .shola-why,
+    .gh-art-section,
+    .gh-story,
+    .shola-about,
+    .shola-showcase,
+    .shola-product,
+    .shola-contact,
+    .shola-wholesale,
+    .shola-hampers,
+    .shola-gallery,
+    .marketplaces,
+    .category-section {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+}
+
+/*==========================
+Global responsive typography
+===========================*/
+html {
+    font-size: 15px;
+}
+
+body {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+p,
+li,
+a,
+span,
+button,
+input,
+textarea,
+label {
+    font-size: 0.95rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+[class*="title"],
+[class*="heading"],
+[class*="subtitle"] {
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+}
+
+h1,
+[class*="title"] {
+    font-size: clamp(1.8rem, 2.4vw, 2.2rem);
+}
+
+h2,
+.marketplaces h2,
+.shola-explore-title,
+.shola-why-title,
+.shola-showcase-title,
+.shola-wholesale-title,
+.shola-gallery-title,
+.shola-section-heading,
+.shola-footer-title,
+.gh-story-title,
+.shola-about-title,
+.shola-contact-title {
+    font-size: clamp(1.5rem, 2.0vw, 1.85rem);
+}
+
+h3,
+.shola-card-content h3,
+.shola-collection-content h3,
+.shola-hamper-content h3,
+.shola-why-card h4 {
+    font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+}
+
+h4,
+h5,
+h6,
+.shola-center-badge h5,
+.shola-why-card h4 {
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
+}
+
+.navbar .navbar-nav .nav-link,
+.tab,
+.footer-heading,
+.announcement-bar .ticker__item {
+    font-size: 0.95rem;
+}
+
+@media (max-width: 991.98px) {
+    html {
+        font-size: 14px;
+    }
+
+    p,
+    li,
+    a,
+    span,
+    button,
+    input,
+    textarea,
+    label {
+        font-size: 0.9rem;
+    }
+
+    h1,
+    [class*="title"] {
+        font-size: clamp(1.7rem, 3vw, 2rem);
+    }
+
+    h2,
+    .marketplaces h2,
+    .shola-explore-title,
+    .shola-why-title,
+    .shola-showcase-title,
+    .shola-wholesale-title,
+    .shola-gallery-title,
+    .shola-section-heading,
+    .shola-footer-title,
+    .gh-story-title,
+    .shola-about-title,
+    .shola-contact-title {
+        font-size: 1.75rem;
+    }
+
+    h3,
+    .shola-card-content h3,
+    .shola-collection-content h3,
+    .shola-hamper-content h3,
+    .shola-why-card h4 {
+        font-size: 1.2rem;
+    }
+
+    h4,
+    h5,
+    h6,
+    .shola-center-badge h5,
+    .shola-why-card h4 {
+        font-size: 1.05rem;
+    }
+
+    .navbar .navbar-nav .nav-link,
+    .tab {
+        font-size: 0.92rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    html {
+        font-size: 13px;
+    }
+
+    p,
+    li,
+    a,
+    span,
+    button,
+    input,
+    textarea,
+    label {
+        font-size: 0.88rem;
+    }
+
+    h1,
+    [class*="title"] {
+        font-size: clamp(1.6rem, 4vw, 1.8rem);
+    }
+
+    h2,
+    .marketplaces h2,
+    .shola-explore-title,
+    .shola-why-title,
+    .shola-showcase-title,
+    .shola-wholesale-title,
+    .shola-gallery-title,
+    .shola-section-heading,
+    .shola-footer-title,
+    .gh-story-title,
+    .shola-about-title,
+    .shola-contact-title {
+        font-size: 1.55rem;
+    }
+
+    h3,
+    .shola-card-content h3,
+    .shola-collection-content h3,
+    .shola-hamper-content h3,
+    .shola-why-card h4 {
+        font-size: 1.1rem;
+    }
+
+    h4,
+    h5,
+    h6,
+    .shola-center-badge h5,
+    .shola-why-card h4 {
+        font-size: 1rem;
+    }
+
+    .navbar .navbar-nav .nav-link,
+    .tab {
+        font-size: 0.9rem;
+        padding: 10px 0.5rem;
+    }
+}
+
+section.shola-collections {
+    padding-top: 30px !important;
+}
+
+.shola-acrylic-section{
+
+padding:120px 8%;
+position:relative;
+overflow:hidden;
+
+background:
+linear-gradient(135deg,#fbf7f2,#efe3d2);
+
+}
+
+/*========================*/
+
+.shola-bg-blob{
+
+position:absolute;
+border-radius:50%;
+filter:blur(130px);
+opacity:.25;
+
+}
+
+.shola-blob-1{
+
+width:420px;
+height:420px;
+background:#c6944b;
+top:-120px;
+left:-100px;
+
+}
+
+.shola-blob-2{
+
+width:380px;
+height:380px;
+background:#7d5d44;
+right:-80px;
+bottom:-100px;
+
+}
+
+/*========================*/
+
+.shola-acrylic-container{
+
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:70px;
+align-items:center;
+
+}
+
+/*========================*/
+
+.shola-glass-badge{
+
+display:inline-block;
+
+padding:12px 26px;
+
+border-radius:100px;
+
+background:rgba(255,255,255,.35);
+
+backdrop-filter:blur(30px);
+
+border:1px solid rgba(255,255,255,.5);
+
+color:#b6803b;
+
+font-weight:600;
+
+letter-spacing:2px;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.08);
+
+}
+
+/*========================*/
+
+.shola-main-title{
+
+font-size:70px;
+margin:30px 0 25px;
+line-height:1;
+
+color:#33261f;
+
+font-family:Georgia;
+
+}
+
+.shola-main-title span{
+
+background:
+linear-gradient(90deg,#c48c42,#f3c885);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+/*========================*/
+
+.shola-main-desc{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#65584f;
+
+margin-bottom:45px;
+
+}
+
+/*========================*/
+
+.shola-info-grid{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:22px;
+
+}
+
+.shola-glass-info{
+
+display:flex;
+align-items:center;
+gap:18px;
+
+padding:22px;
+
+border-radius:24px;
+
+background:rgba(255,255,255,.25);
+
+backdrop-filter:blur(25px);
+
+border:1px solid rgba(255,255,255,.4);
+
+box-shadow:
+0 15px 35px rgba(0,0,0,.07);
+
+transition:.4s;
+
+}
+
+.shola-glass-info:hover{
+
+transform:translateY(-8px);
+
+box-shadow:
+0 20px 45px rgba(193,140,67,.25);
+
+}
+
+.shola-glass-info span{
+
+font-size:34px;
+
+}
+
+.shola-glass-info h4{
+
+color:#3c2b22;
+margin-bottom:6px;
+
+}
+
+.shola-glass-info p{
+
+color:#8c7c70;
+
+}
+
+/*========================*/
+
+.shola-art-card{
+
+position:relative;
+
+padding:22px;
+
+border-radius:40px;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(35px);
+
+border:1px solid rgba(255,255,255,.45);
+
+box-shadow:
+0 30px 60px rgba(0,0,0,.1);
+
+}
+
+.shola-art-card img{
+
+width:100%;
+
+border-radius:28px;
+
+display:block;
+
+}
+
+/*========================*/
+
+.shola-art-overlay{
+
+margin-top:-80px;
+
+margin-left:25px;
+margin-right:25px;
+
+padding:30px;
+
+border-radius:28px;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(40px);
+
+border:1px solid rgba(255,255,255,.45);
+
+box-shadow:
+0 20px 40px rgba(0,0,0,.1);
+
+position:relative;
+
+}
+
+/*========================*/
+
+.shola-status{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:50px;
+
+background:rgba(62,167,89,.15);
+
+color:#1d8a45;
+
+font-weight:600;
+
+margin-bottom:18px;
+
+}
+
+.shola-art-overlay h2{
+
+font-size:32px;
+
+margin-bottom:10px;
+
+color:#34241c;
+
+}
+
+.shola-art-overlay p{
+
+color:#73655d;
+
+margin-bottom:25px;
+
+}
+
+/*========================*/
+
+.shola-meta{
+
+display:flex;
+justify-content:space-between;
+
+margin-bottom:25px;
+
+}
+
+.shola-meta small{
+
+display:block;
+
+color:#9d9088;
+
+margin-bottom:5px;
+
+}
+
+.shola-meta strong{
+
+color:#33251f;
+
+}
+
+/*========================*/
+
+.shola-story{
+
+padding:20px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,.18);
+
+border:1px solid rgba(255,255,255,.35);
+
+margin-bottom:25px;
+
+font-style:italic;
+
+color:#665952;
+
+line-height:1.7;
+
+}
+
+/*========================*/
+
+.shola-art-overlay button{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:60px;
+
+background:
+linear-gradient(90deg,#b77f3d,#e2bd83);
+
+color:#fff;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.4s;
+
+}
+
+.shola-art-overlay button:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+0 15px 35px rgba(183,127,61,.35);
+
+}
+
+/*========================*/
+
+@media(max-width:991px){
+
+.shola-acrylic-container{
+
+grid-template-columns:1fr;
+
+}
+
+.shola-main-title{
+
+font-size:48px;
+
+}
+
+}

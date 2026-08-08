@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const setActiveGiftTab = (tabId) => {
-        const tabs = ['personalizedTab', 'corporateTab', 'artStudioTab'];
+        const tabs = ['hampersTab', 'bulkTab', 'artStudioTab'];
         tabs.forEach((id) => {
             const tab = document.getElementById(id);
             if (!tab) return;
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const setupGiftTabs = () => {
-        const tabs = ['personalizedTab', 'corporateTab', 'artStudioTab'];
+        const tabs = ['hampersTab', 'bulkTab', 'artStudioTab'];
         tabs.forEach((id) => {
             const tab = document.getElementById(id);
             if (!tab) {

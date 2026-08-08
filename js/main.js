@@ -83,11 +83,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         {
             category: "Signature Collection",
-            title: "Wild Forest Honey Hamper",
+            title: "Raw Honey",
             image: "https://placehold.co/700x700/f7f3ec/b98b4d?text=Wild+Forest+Honey",
             description: "Premium raw honey harvested from the forests of the Western Ghats, beautifully paired with handcrafted gourmet delights.",
             features: ["Raw Honey", "Artisan Made", "Sustainable"]
         },
+        
 
         {
             category: "Coffee Collection",
@@ -105,29 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
             features: ["Organic", "Farm Fresh", "Traditional"]
         },
 
-        {
-            category: "Wedding Collection",
-            title: "Wedding Gift Hamper",
-            image: "https://placehold.co/700x700/f7f3ec/b98b4d?text=Wedding+Hamper",
-            description: "Elegant handcrafted hampers curated for weddings, engagements and life's most cherished celebrations.",
-            features: ["Luxury", "Custom", "Elegant"]
-        },
-
-        {
-            category: "Wellness Collection",
-            title: "Nature's Wellness Basket",
-            image: "https://placehold.co/700x700/f7f3ec/b98b4d?text=Wellness+Basket",
-            description: "A mindful collection of natural honey, herbal products and wellness essentials inspired by nature.",
-            features: ["Healthy", "Natural", "Eco Friendly"]
-        },
-
-        {
-            category: "Corporate Collection",
-            title: "Corporate Signature Box",
-            image: "https://placehold.co/700x700/f7f3ec/b98b4d?text=Corporate+Gift",
-            description: "Premium corporate gifting solutions designed to leave a lasting impression on clients and teams alike.",
-            features: ["Custom Branding", "Bulk Orders", "Premium"]
-        }
+    
 
     ];
 
