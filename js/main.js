@@ -1,72 +1,66 @@
 (function ($) {
-    "use strict";
+  "use strict";
 
-    // Spinner
-    var spinner = function () {
-        setTimeout(function () {
-            if ($('#spinner').length > 0) {
-                $('#spinner').removeClass('show');
-            }
-        }, 1);
-    };
-    spinner();
-    
-    
-    // Initiate the wowjs
-    new WOW().init();
+  // Spinner
+  var spinner = function () {
+    setTimeout(function () {
+      if ($("#spinner").length > 0) {
+        $("#spinner").removeClass("show");
+      }
+    }, 1);
+  };
+  spinner();
 
+  // Initiate the wowjs
+  new WOW().init();
 
-    // Fixed Navbar — simplified to avoid layout shifts
-    $(window).on('scroll resize', function () {
-        if ($(this).scrollTop() > 45) {
-            $('.fixed-top').addClass('bg-white shadow');
-        } else {
-            $('.fixed-top').removeClass('bg-white shadow');
-        }
-    });
-    
-    
-    // Back to top button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
-        }
-    });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-        return false;
-    });
+  // Fixed Navbar — simplified to avoid layout shifts
+  $(window).on("scroll resize", function () {
+    if ($(this).scrollTop() > 45) {
+      $(".fixed-top").addClass("bg-white shadow");
+    } else {
+      $(".fixed-top").removeClass("bg-white shadow");
+    }
+  });
 
+  // Back to top button
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 300) {
+      $(".back-to-top").fadeIn("slow");
+    } else {
+      $(".back-to-top").fadeOut("slow");
+    }
+  });
+  $(".back-to-top").click(function () {
+    $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
+    return false;
+  });
 
-    // Testimonials carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        margin: 25,
-        loop: true,
-        center: true,
-        dots: false,
-        nav: true,
-        navText : [
-            '<i class="bi bi-chevron-left"></i>',
-            '<i class="bi bi-chevron-right"></i>'
-        ],
-        responsive: {
-            0:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            }
-        }
-    });
-
-
+  // Testimonials carousel
+  $(".testimonial-carousel").owlCarousel({
+    autoplay: true,
+    smartSpeed: 1000,
+    margin: 25,
+    loop: true,
+    center: true,
+    dots: false,
+    nav: true,
+    navText: [
+      '<i class="bi bi-chevron-left"></i>',
+      '<i class="bi bi-chevron-right"></i>',
+    ],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      768: {
+        items: 2,
+      },
+      992: {
+        items: 3,
+      },
+    },
+  });
 })(jQuery);
 
 /*==================================
@@ -74,98 +68,309 @@
 ==================================*/
 
 document.addEventListener("DOMContentLoaded", function () {
+  const tabs = document.querySelectorAll(".shola-tab");
 
-    const tabs = document.querySelectorAll(".shola-tab");
+  if (!tabs.length) return;
 
-    if (!tabs.length) return;
+  /* ==================================
+        SHOLA COLLECTION DATA
+  ================================== */
 
-    const products = [
+  const collections = [
+    {
+      category: "Signature Collection",
+
+      description:
+        "Thoughtfully curated, consciously crafted: signature hampers designed for sustainable luxury and memorable rituals.",
+
+      products: [
+        {
+          title: "The Wooden Tray Curation",
+
+          image:
+            "https://placehold.co/700x700/f7f3ec/b98b4d?text=Wooden+Tray+Curation",
+
+          description:
+            "Sustainable luxury designed to leave zero waste behind—just a beautiful, reusable wooden tray.",
+
+          features: [
+            "Raw Pure Honey",
+            "Single-Origin Aromatic Pepper",
+            "Freshly Packed Coffee Powder",
+            "Matching Wooden Bowl",
+            "Wooden Spoon",
+            "Traditional Wooden Honey Dipper",
+          ],
+        },
 
         {
-            category: "Signature Collection",
-            title: "Raw Honey",
-            image: "https://placehold.co/700x700/f7f3ec/b98b4d?text=Wild+Forest+Honey",
-            description: "Premium raw honey harvested from the forests of the Western Ghats, beautifully paired with handcrafted gourmet delights.",
-            features: ["Raw Honey", "Artisan Made", "Sustainable"]
+          title: "The Aesthete Coffee Experience",
+
+          image:
+            "https://placehold.co/700x700/f7f3ec/b98b4d?text=Aesthete+Coffee+Experience",
+
+          description:
+            "A cozy, aromatic ritual packed into a stunning keepsake wooden box.",
+
+          features: [
+            "Authentic Premium Coffee Powder",
+            "Traditional Brass Coffee Cup & Saucer",
+            "Hand-Poured Coffee-Scented Soy Candle",
+            "Wooden Spoon",
+          ],
         },
-        
+      ],
+    },
+
+    {
+      category: "Premium Collection",
+
+      description:
+        "Elegant rigid-box hampers ideal for corporate gifting, professional appreciation, and high-profile celebrations.",
+
+      products: [
+        {
+          title: "Premium Gift Hamper",
+
+          image:
+            "https://placehold.co/700x700/f7f3ec/b98b4d?text=Premium+Collection",
+
+          description:
+            "An elegant rigid-box hamper created for corporate gifting, professional appreciation, and high-profile celebrations.",
+
+          features: [
+            "Pure Raw Honey",
+            "Premium Roasted Coffee",
+            "Whole Black Pepper",
+            "Wooden Spoon",
+            "Traditional Honey Dipper",
+          ],
+        },
+      ],
+    },
+
+    {
+      category: "Curated Hampers",
+
+      description:
+        "Compact blend of bold flavors and comforting rituals, perfectly sized for a meaningful thank-you or a personal treat.",
+
+      products: [
+        {
+          title: "The Sweet & Spice Blend",
+
+          image:
+            "https://placehold.co/700x700/f7f3ec/b98b4d?text=Sweet+%26+Spice",
+
+          description:
+            "A perfect balance of sweet warmth and bold spice in a curated paper bag, ideal for wellness lovers and gourmet collections.",
+
+          features: [
+            "Premium Raw Honey",
+            "Whole Black Pepper",
+            "Traditional Wooden Honey Dripper",
+            "Personalized Message Card",
+          ],
+        },
 
         {
-            category: "Coffee Collection",
-            title: "Malnad Coffee Box",
-            image: "https://placehold.co/700x700/f7f3ec/b98b4d?text=Malnad+Coffee",
-            description: "Freshly roasted single-origin coffee sourced from the finest estates of Karnataka, packed for unforgettable gifting.",
-            features: ["Single Origin", "Fresh Roast", "Premium Beans"]
+          title: "Morning Brew Ritual",
+
+          image:
+            "https://placehold.co/700x700/f7f3ec/b98b4d?text=Morning+Brew+Ritual",
+
+          description:
+            "The ultimate morning upgrade that pairs rich coffee with the natural sweetness of pure honey in a curated paper bag.",
+
+          features: [
+            "Rich Coffee Powder",
+            "Premium Honey",
+            "Traditional Wooden Honey Dripper",
+            "Personalized Message Card",
+          ],
         },
 
         {
-            category: "Spice Collection",
-            title: "Heritage Spice Box",
-            image: "https://placehold.co/700x700/f7f3ec/b98b4d?text=Heritage+Spices",
-            description: "Discover authentic Malnad spices carefully selected to bring rich aroma and traditional flavours into every kitchen.",
-            features: ["Organic", "Farm Fresh", "Traditional"]
+          title: "Bold Mix of Brew & Spice",
+
+          image:
+            "https://placehold.co/700x700/f7f3ec/b98b4d?text=Brew+%26+Spice",
+
+          description:
+            "An earthy, robust combination designed for those who appreciate deep, intense, and sophisticated flavors.",
+
+          features: [
+            "Rich Coffee Powder",
+            "Whole Black Pepper",
+            "Handcrafted Wooden Spoon",
+            "Personalized Message Card",
+          ],
         },
+      ],
+    },
 
-    
+    {
+      category: "Mini Hampers",
 
-    ];
+      description:
+        "Simple, thoughtful gifts designed to make a big impression. The perfect token of appreciation for large groups and celebrations.",
 
-    const image = document.getElementById("productImage");
-    const category = document.getElementById("productCategory");
-    const title = document.getElementById("productTitle");
-    const description = document.getElementById("productDescription");
-    const features = document.getElementById("productFeatures");
+      products: [
+        {
+          title: "Mini Hamper",
 
-    tabs.forEach(tab => {
+          image: "https://placehold.co/700x700/f7f3ec/b98b4d?text=Mini+Hamper",
 
-        tab.addEventListener("click", function () {
+          description:
+            "A simple and thoughtful gift designed to make a big impression—perfect for celebrations, giveaways, and meaningful thank-you gestures.",
 
-            tabs.forEach(btn => btn.classList.remove("active"));
+          features: ["Raw Honey", "Wooden Honey Dipper", "Personalized Note"],
+        },
+      ],
+    },
+  ];
 
-            this.classList.add("active");
+  /* ==================================
+        HTML ELEMENTS
+  ================================== */
 
-            const product = products[this.dataset.product];
+  const image = document.getElementById("productImage");
+  const category = document.getElementById("productCategory");
+  const title = document.getElementById("productTitle");
+  const description = document.getElementById("productDescription");
+  const features = document.getElementById("productFeatures");
 
-            image.classList.add("fade-out");
-            category.classList.add("fade-out");
-            title.classList.add("fade-out");
-            description.classList.add("fade-out");
-            features.classList.add("fade-out");
+  /*
+    Optional:
+    If you have a container for multiple product buttons/cards,
+    give it this ID:
 
-            setTimeout(() => {
+    <div id="productSelector"></div>
+  */
 
-                image.src = product.image;
+  const productSelector = document.getElementById("productSelector");
 
-                category.textContent = product.category;
+  /* ==================================
+        SHOW PRODUCT
+  ================================== */
 
-                title.textContent = product.title;
+  function showProduct(product, collection) {
+    if (!product) return;
 
-                description.textContent = product.description;
+    // Update image immediately
+    productImage.src = product.image;
+    productImage.alt = product.title;
 
-                features.innerHTML = "";
+    // Update category immediately
+    productCategory.textContent = collection.category;
 
-                product.features.forEach(feature => {
+    // Update title immediately
+    productTitle.textContent = product.title;
 
-                    const chip = document.createElement("span");
+    // Update description immediately
+    productDescription.textContent = product.description;
 
-                    chip.textContent = feature;
+    // Update features immediately
+    productFeatures.innerHTML = "";
 
-                    features.appendChild(chip);
+    product.features.forEach(function (feature) {
+      const chip = document.createElement("span");
 
-                });
+      chip.textContent = feature;
 
-                image.classList.remove("fade-out");
-                category.classList.remove("fade-out");
-                title.classList.remove("fade-out");
-                description.classList.remove("fade-out");
-                features.classList.remove("fade-out");
-
-            }, 250);
-
-        });
-
+      productFeatures.appendChild(chip);
     });
 
+    // Make sure nothing is hidden
+    productImage.classList.remove("fade-out");
+    productCategory.classList.remove("fade-out");
+    productTitle.classList.remove("fade-out");
+    productDescription.classList.remove("fade-out");
+    productFeatures.classList.remove("fade-out");
+  }
+
+  /* ==================================
+        CREATE PRODUCT SELECTOR
+  ================================== */
+
+  function createProductSelector(collection) {
+    productSelector.innerHTML = "";
+
+    if (collection.products.length <= 1) {
+      productSelector.style.display = "none";
+      return;
+    }
+
+    productSelector.style.display = "flex";
+
+    collection.products.forEach(function (product, index) {
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.className = "shola-product-selector";
+      button.textContent = product.title;
+
+      if (index === 0) {
+        button.classList.add("active");
+      }
+
+      button.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // Remove active from all product buttons
+        productSelector
+          .querySelectorAll(".shola-product-selector")
+          .forEach(function (btn) {
+            btn.classList.remove("active");
+          });
+
+        // Activate clicked button
+        button.classList.add("active");
+
+        // Immediately show selected product
+        showProduct(product, collection);
+      });
+
+      productSelector.appendChild(button);
+    });
+  }
+
+  /* ==================================
+        COLLECTION TABS
+  ================================== */
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", function () {
+      tabs.forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      this.classList.add("active");
+
+      const collectionIndex = Number(this.dataset.collection);
+
+      const collection = collections[collectionIndex];
+
+      if (!collection) return;
+
+      // Show first product initially
+      const firstProduct = collection.products[0];
+
+      createProductSelector(collection);
+
+      showProduct(firstProduct, collection);
+    });
+  });
+
+  /* ==================================
+        INITIAL COLLECTION
+  ================================== */
+
+  const activeTab = document.querySelector(".shola-tab.active") || tabs[0];
+
+  if (activeTab) {
+    activeTab.click();
+  }
 });
 
 /*==================================
@@ -173,126 +378,87 @@ document.addEventListener("DOMContentLoaded", function () {
 ==================================*/
 
 document.addEventListener("DOMContentLoaded", function () {
+  const galleryItems = document.querySelectorAll(".shola-gallery-item");
+  const lightbox = document.querySelector(".shola-lightbox");
+  const lightboxImage = document.getElementById("sholaLightboxImage");
 
-    const galleryItems = document.querySelectorAll(".shola-gallery-item");
-    const lightbox = document.querySelector(".shola-lightbox");
-    const lightboxImage = document.getElementById("sholaLightboxImage");
+  const closeBtn = document.querySelector(".shola-lightbox-close");
+  const prevBtn = document.querySelector(".shola-lightbox-prev");
+  const nextBtn = document.querySelector(".shola-lightbox-next");
 
-    const closeBtn = document.querySelector(".shola-lightbox-close");
-    const prevBtn = document.querySelector(".shola-lightbox-prev");
-    const nextBtn = document.querySelector(".shola-lightbox-next");
+  if (!galleryItems.length) return;
 
-    if (!galleryItems.length) return;
+  let currentIndex = 0;
 
-    let currentIndex = 0;
+  function openImage(index) {
+    currentIndex = index;
 
-    function openImage(index){
+    const img = galleryItems[index].querySelector("img");
 
-        currentIndex = index;
+    lightboxImage.src = img.src;
 
-        const img = galleryItems[index].querySelector("img");
+    lightbox.classList.add("active");
 
-        lightboxImage.src = img.src;
+    document.body.style.overflow = "hidden";
+  }
 
-        lightbox.classList.add("active");
+  function closeImage() {
+    lightbox.classList.remove("active");
 
-        document.body.style.overflow = "hidden";
+    document.body.style.overflow = "";
+  }
 
+  function nextImage() {
+    currentIndex++;
+
+    if (currentIndex >= galleryItems.length) {
+      currentIndex = 0;
     }
 
-    function closeImage(){
+    lightboxImage.src = galleryItems[currentIndex].querySelector("img").src;
+  }
 
-        lightbox.classList.remove("active");
+  function prevImage() {
+    currentIndex--;
 
-        document.body.style.overflow = "";
-
+    if (currentIndex < 0) {
+      currentIndex = galleryItems.length - 1;
     }
 
-    function nextImage(){
+    lightboxImage.src = galleryItems[currentIndex].querySelector("img").src;
+  }
 
-        currentIndex++;
-
-        if(currentIndex >= galleryItems.length){
-
-            currentIndex = 0;
-
-        }
-
-        lightboxImage.src =
-        galleryItems[currentIndex]
-        .querySelector("img").src;
-
-    }
-
-    function prevImage(){
-
-        currentIndex--;
-
-        if(currentIndex < 0){
-
-            currentIndex =
-            galleryItems.length - 1;
-
-        }
-
-        lightboxImage.src =
-        galleryItems[currentIndex]
-        .querySelector("img").src;
-
-    }
-
-
-    galleryItems.forEach((item,index)=>{
-
-        item.addEventListener("click",()=>{
-
-            openImage(index);
-
-        });
-
+  galleryItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      openImage(index);
     });
+  });
 
+  closeBtn.addEventListener("click", closeImage);
 
-    closeBtn.addEventListener("click",closeImage);
+  nextBtn.addEventListener("click", nextImage);
 
-    nextBtn.addEventListener("click",nextImage);
+  prevBtn.addEventListener("click", prevImage);
 
-    prevBtn.addEventListener("click",prevImage);
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      closeImage();
+    }
+  });
 
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("active")) return;
 
-    lightbox.addEventListener("click",(e)=>{
+    if (e.key === "Escape") {
+      closeImage();
+    }
 
-        if(e.target===lightbox){
+    if (e.key === "ArrowRight") {
+      nextImage();
+    }
 
-            closeImage();
-
-        }
-
-    });
-
-
-    document.addEventListener("keydown",(e)=>{
-
-        if(!lightbox.classList.contains("active")) return;
-
-        if(e.key==="Escape"){
-
-            closeImage();
-
-        }
-
-        if(e.key==="ArrowRight"){
-
-            nextImage();
-
-        }
-
-        if(e.key==="ArrowLeft"){
-
-            prevImage();
-
-        }
-
-    });
-
+    if (e.key === "ArrowLeft") {
+      prevImage();
+    }
+  });
 });

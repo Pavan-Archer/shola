@@ -8381,3 +8381,86 @@ font-size:48px;
 }
 
 }
+
+.nav-gift-toggle a {
+    font-size: 12px !important;
+}
+
+/* ==================================
+   PRODUCT SELECTOR
+================================== */
+
+.shola-product-selector-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 35px 0 45px;
+}
+
+
+.shola-product-selector {
+    border: 1px solid #d8c5aa;
+    background: transparent;
+    color: #6b5338;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+
+.shola-product-selector:hover {
+    background: #f7f3ec;
+}
+
+
+.shola-product-selector.active {
+    background: #b98b4d;
+    border-color: #b98b4d;
+    color: #fff;
+}
+
+
+/* ==================================
+   PRODUCT FADE ANIMATION
+================================== */
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+
+#productImage,
+#productCategory,
+#productTitle,
+#productDescription,
+#productFeatures {
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* ==================================
+   MOBILE
+================================== */
+
+@media (max-width: 767px) {
+
+    .shola-product-selector-wrapper {
+        margin: 25px 0 30px;
+        gap: 8px;
+    }
+
+    .shola-product-selector {
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+
+}
+
