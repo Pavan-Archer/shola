@@ -85,13 +85,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       products: [
         {
-          title: "The Wooden Tray Curation",
+          title: "The Canopy Collection",
 
           image:
             "https://placehold.co/700x700/f7f3ec/b98b4d?text=Wooden+Tray+Curation",
 
           description:
-            "Sustainable luxury designed to leave zero waste behind—just a beautiful, reusable wooden tray.",
+            "A rustic blend of pure honey, rich coffee, and bold pepper, paired with handcrafted wooden essentials for your daily ritual.",
 
           features: [
             "Raw Pure Honey",
@@ -104,13 +104,13 @@ document.addEventListener("DOMContentLoaded", function () {
         },
 
         {
-          title: "The Aesthete Coffee Experience",
+          title: "The Aesthetic Coffee Experience",
 
           image:
             "https://placehold.co/700x700/f7f3ec/b98b4d?text=Aesthete+Coffee+Experience",
 
           description:
-            "A cozy, aromatic ritual packed into a stunning keepsake wooden box.",
+            "A cozy, aromatic ritual packed into a stunning keepsake rigid box.",
 
           features: [
             "Authentic Premium Coffee Powder",
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       products: [
         {
-          title: "Premium Gift Hamper",
+          title: "The Heritage Crate",
 
           image:
             "https://placehold.co/700x700/f7f3ec/b98b4d?text=Premium+Collection",
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "https://placehold.co/700x700/f7f3ec/b98b4d?text=Morning+Brew+Ritual",
 
           description:
-            "The ultimate morning upgrade that pairs rich coffee with the natural sweetness of pure honey in a curated paper bag.",
+            "The ultimate morning upgrade that pairs rich coffee with the natural sweetness of pure honey.",
 
           features: [
             "Rich Coffee Powder",
