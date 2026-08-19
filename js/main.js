@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       products: [
         {
-          title: "Mini Hamper",
+          title: "Gift-lets",
 
           image: "https://placehold.co/700x700/f7f3ec/b98b4d?text=Mini+Hamper",
 
