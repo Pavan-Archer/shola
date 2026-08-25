@@ -187,19 +187,32 @@
 
                     <div class="shola-contact-form">
 
-                        <form>
+                        <form action="#" method="post">
 
                             <div class="row">
 
                                 <div class="col-md-6 mb-4">
 
-                                    <input type="text" class="form-control shola-input" placeholder=" Name">
+                                    <label class="visually-hidden" for="contact-name">Name</label>
+
+                                    <input type="text" id="contact-name" name="name"
+                                        class="form-control shola-input" placeholder="Name"
+                                        autocomplete="name" required
+                                        aria-describedby="contact-name-msg">
+
+                                    <p class="shola-field-msg" id="contact-name-msg">
+                                        Please enter your name.
+                                    </p>
 
                                 </div>
 
                                 <div class="col-md-6 mb-4">
 
-                                    <input type="email" class="form-control shola-input" placeholder=" Address">
+                                    <label class="visually-hidden" for="contact-address">Address</label>
+
+                                    <input type="text" id="contact-address" name="address"
+                                        class="form-control shola-input" placeholder="Address"
+                                        autocomplete="street-address">
 
                                 </div>
 
@@ -210,23 +223,47 @@
 
                                 <div class="col-md-6 mb-4">
 
-                                    <input type="text" class="form-control shola-input" placeholder="Phone ">
+                                    <label class="visually-hidden" for="contact-phone">Phone</label>
+
+                                    <input type="tel" id="contact-phone" name="phone"
+                                        class="form-control shola-input" placeholder="Phone"
+                                        autocomplete="tel" inputmode="tel" required
+                                        aria-describedby="contact-phone-msg">
+
+                                    <p class="shola-field-msg" id="contact-phone-msg">
+                                        Please enter your phone number.
+                                    </p>
 
                                 </div>
 
                                 <div class="col-md-6 mb-4">
 
-                                    <input type="text" class="form-control shola-input" placeholder="Subject">
+                                    <label class="visually-hidden" for="contact-subject">Subject</label>
+
+                                    <input type="text" id="contact-subject" name="subject"
+                                        class="form-control shola-input" placeholder="Subject">
 
                                 </div>
 
                             </div>
 
 
-                            <textarea rows="6" class="form-control shola-input" placeholder="Message..."></textarea>
+                            <div class="mb-1">
+
+                                <label class="visually-hidden" for="contact-message">Message</label>
+
+                                <textarea rows="6" id="contact-message" name="message"
+                                    class="form-control shola-input" placeholder="Message..."
+                                    required aria-describedby="contact-message-msg"></textarea>
+
+                                <p class="shola-field-msg" id="contact-message-msg">
+                                    Please write a short message.
+                                </p>
+
+                            </div>
 
 
-                            <button class="shola-contact-btn mt-4">
+                            <button type="submit" class="shola-contact-btn mt-4">
 
                                 Submit
 

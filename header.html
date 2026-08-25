@@ -97,7 +97,18 @@
             }
         }
 
-        /* Alignment and spacing fixes for large screens */
+        /* =================================================================
+           HEADER / NAV LAYOUT
+           Intentional sizing per width band. The logo has NO inline
+           max-height so these media queries actually take effect.
+           ================================================================= */
+
+        .shola-logo-img {
+            max-height: 80px;
+            width: auto;
+            transition: max-height .25s ease;
+        }
+
         .nav-left {
             padding-left: 2rem;
         }
@@ -107,7 +118,6 @@
         }
 
         .nav-center-logo img {
-            max-height: 80px;
             position: relative;
             z-index: 10;
         }
@@ -133,30 +143,99 @@
         .navbar-nav .dropdown-menu {
             min-width: 160px;
         }
-    </style>
 
-    <style>
-        /* Prevent overlap on medium/smaller viewports: shrink logo a bit */
-        @media (max-width: 1199px) {
-            .nav-center-logo img {
-                max-height: 72px;
+        /* ---- Desktop 1200px+ (default above): logo 80px, full gaps ---- */
+
+        /* ---- Large tablets / small laptops 992 - 1199.98px ---- */
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .shola-logo-img { max-height: 64px; }
+            .nav-left  { padding-left: 1.0rem; }
+            .nav-right { padding-right: 1.0rem; }
+            .gift-pill { padding: 6px 11px; font-size: 13px; }
+            .navbar-nav.flex-lg-row { gap: 0.5rem; }
+            .navbar-nav .nav-link { padding: .45rem .42rem; font-size: .9rem; }
+        }
+
+        /* ---- Tablet & Mobile (< 992px): collapsed hamburger menu ---- */
+        @media (max-width: 991.98px) {
+            .shola-logo-img { max-height: 60px; }
+
+            .nav-left  { padding-left: .75rem; }
+            .nav-right { padding-right: .75rem; }
+            .nav-center-logo { justify-content: center; }
+            .nav-right { justify-content: flex-end; }
+
+            /*
+              Full-width mobile menu panel.
+              The navbar lives inside .fixed-top (position: fixed), so an
+              absolutely positioned panel below the nav spans the viewport
+              cleanly instead of being trapped inside the right 33% column.
+            */
+            .navbar .nav-right { position: static; }
+            .navbar .nav-right > .collapse.navbar-collapse {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                margin: 0;
+                padding: 0;               /* neutralize any ≤576px padding rule */
+                z-index: 1050;
+            }
+
+            #navbarCollapse .navbar-nav {
+                width: 100%;
+                padding: 0.75rem 1rem !important;      /* overrides .p-4 */
+                background: #ffffff;
+                border: 1px solid rgba(0,0,0,.06);
+                border-radius: 14px;
+                align-items: stretch !important;
+                margin-top: 8px;
+            }
+
+            #navbarCollapse .navbar-nav .nav-link {
+                padding: 0.8rem 0.5rem !important;      /* ~44px touch target */
+                text-align: left;
+                line-height: 1.4;
+                border-top: none;
+                border-bottom: 1px solid rgba(0,0,0,.045);
+                border-radius: 0;
+            }
+            #navbarCollapse .navbar-nav .nav-link:last-of-type {
+                border-bottom: none;
+            }
+            #navbarCollapse .navbar-nav .nav-link:hover,
+            #navbarCollapse .navbar-nav .nav-link.active {
+                background: rgba(176,123,69,.08);
+                border-radius: 10px;
+            }
+
+            /* Mobile toggle — dedicated touch target, aligned right */
+            .navbar-toggler {
+                padding: .5rem .7rem;
+                min-height: 44px;
+                min-width: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid rgba(0,0,0,.07);
+                background: #ffffff;
+                border-radius: 10px;
+            }
+            .navbar .navbar-toggler.me-3 {
+                margin-right: 0 !important;
             }
         }
 
-        @media (max-width: 991px) {
-            .nav-center-logo img {
-                max-height: 60px;
-            }
-
-            /* Ensure pills remain visible and tappable on small screens */
-            .nav-gift-toggle {
-                z-index: 40;
-            }
+        /* ---- Small phones (< 576px) ---- */
+        @media (max-width: 575.98px) {
+            .shola-logo-img { max-height: 52px; }
+            #navbarCollapse .navbar-nav { padding: .5rem .75rem !important; }
         }
     </style>
 
     <nav class="navbar navbar-light py-lg-0 px-lg-0 wow fadeIn" style="background: #e0d8cd;">
-        <div class="container-fluid px-lg-5">
+        <div class="container-fluid">
             <div class="row w-100 align-items-center gx-0">
                 <div class="col-4 d-flex align-items-center nav-left">
                     <div class="nav-gift-toggle d-none d-lg-flex">
@@ -169,8 +248,7 @@
                 </div>
                 <div class="col-4 d-flex justify-content-center nav-center-logo">
                     <a href="index.html" class="navbar-brand d-inline-flex align-items-center">
-                        <img src="img/shola-logo-g.gif" alt="Shola" class="img-fluid"
-                            style="max-height:100px; width:auto;" />
+                        <img src="img/shola-logo-g.gif" alt="Shola" class="img-fluid shola-logo-img" />
                     </a>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center nav-right">

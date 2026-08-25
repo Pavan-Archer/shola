@@ -1,9 +1,55 @@
-/********** Template CSS **********/
+﻿/********** Template CSS **********/
 :root {
     --primary: #3A2D28;
     --secondary: #aa5f03;
     --light: #F7F8FC;
     --dark: #111111;
+
+    /* ---- Shola design tokens ---- */
+    /* Fonts */
+    --font-display: 'Lora', 'Open Sans', serif;
+    --font-body: 'Open Sans', Arial, sans-serif;
+
+    /* Type scale (rem — relative to the 15/14/13px root scale) */
+    --fs-xs: 0.75rem;          /* ~11px  captions */
+    --fs-sm: 0.85rem;         /* ~12px  labels / badge chips */
+    --fs-base: 0.95rem;       /* ~14px  base UI text */
+    --fs-md: 1rem;            /* ~15px  paragraphs / buttons */
+    --fs-h4: clamp(1.1rem, 1.6vw, 1.3rem);   /* ~17–20px */
+    --fs-h3: clamp(1.3rem, 2vw, 1.6rem);     /* ~20–24px */
+    --fs-h2: clamp(1.6rem, 2.8vw, 2.5rem);   /* ~25–38px */
+    --fs-h1: clamp(2rem, 3.4vw, 2.8rem);     /* ~30–42px */
+    --fs-hero: clamp(2.6rem, 4.5vw, 4rem);   /* ~39–60px hero titles */
+
+    /* Text colors */
+    --text-strong: #222222;
+    --text-body: #666666;
+    --text-muted: #888888;
+
+    /* Buttons */
+    --btn-font: var(--font-body);
+    --btn-weight: 600;
+    --btn-radius: 999px;
+    --btn-min-h: 48px;
+    --btn-pad-y: 0.9rem;
+    --btn-pad-x: 2rem;
+    --btn-gap: 0.625rem;                     /* 10px  icon gap */
+    --btn-focus-ring: 0 0 0 4px rgba(185, 139, 77, 0.35);
+    --btn-transition: transform .3s ease, background-color .3s ease, color .3s ease,
+        border-color .3s ease, box-shadow .3s ease;
+    --link-focus: 3px solid rgba(185, 139, 77, 0.5);
+
+    /* Cards & grids */
+    --radius-sm: 14px;                         /* chips / inner bits */
+    --radius-md: 20px;                         /* inset cards */
+    --radius-lg: 28px;                         /* standard cards */
+    --radius-xl: 32px;                         /* feature frames */
+    --shadow-1: 0 12px 32px rgba(0, 0, 0, 0.05);
+    --shadow-2: 0 24px 48px rgba(0, 0, 0, 0.09);
+    --shadow-3: 0 30px 60px rgba(0, 0, 0, 0.11);
+    --card-pad: clamp(20px, 3vw, 32px);
+    --grid-gap: 24px;                          /* card grids */
+    --split-gap: clamp(36px, 5vw, 60px);       /* 2-column splits */
 }
 
 .back-to-top {
@@ -150,9 +196,18 @@
     }
 }
 
-/* General navbar/drowdown styling */
+/* General navbar/dropdown styling */
 .navbar {
     z-index: 1100;
+}
+
+/* Header structural alignment */
+.navbar-brand {
+    padding: 0;
+    margin-right: 0;
+}
+.navbar .row.w-100 > [class*="col-"] {
+    min-width: 0;   /* let flex children shrink instead of overflowing */
 }
 
 /* Refined header/navbar alignment overrides */
@@ -162,13 +217,22 @@
     .nav-left, .nav-center-logo, .nav-right { display:flex; align-items:center; }
     .nav-left { padding-left: 1.5rem; }
     .nav-right { padding-right: 1.5rem; }
-    .nav-center-logo img { max-height: 78px; }
     .navbar .navbar-nav.flex-lg-row { padding: 0; margin: 0; gap: 1.25rem; }
     /* make nav links vertically centered and not stacked */
     .navbar .navbar-nav .nav-link { padding: 0.5rem .75rem; line-height: 1; height: auto; }
     .nav-right .navbar-nav { align-items: center; }
     /* ensure dropdown label aligns with other links */
     .nav-item.dropdown > .nav-link::after { margin-left: .5rem; }
+    /* Desktop: restore in-flow links (undo mobile absolute menu panel) */
+    .navbar .nav-right { position: static; }
+    .navbar .nav-right > .collapse.navbar-collapse {
+        position: static;
+        top: auto;
+        left: auto;
+        right: auto;
+        width: auto;
+        margin: 0;
+    }
 }
 
 @media (max-width: 991.98px) {
@@ -510,12 +574,18 @@
 }
 
 #header {
-    min-height: 155px;
+    min-height: 144px;   /* top-bar 45px + navbar row 96px + border */
 }
 
 @media (max-width: 991.98px) {
     #header {
-        min-height: 145px;
+        min-height: 76px;   /* collapsed nav: logo 60px + padding */
+    }
+}
+
+@media (max-width: 575.98px) {
+    #header {
+        min-height: 66px;   /* compact phone header: logo 52px + padding */
     }
 }
 
@@ -599,15 +669,7 @@
     color: #fff; 
 }
 
-.mb-5 {
-    margin-bottom: 0px !important;
-}
-
-.display-2 {
-        font-size: 50px!important;
-    }
-
- .btn-check:checked+.btn-outline-primary:focus, .btn-check:active+.btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus {
+.btn-check:checked+.btn-outline-primary:focus, .btn-check:active+.btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus {
     box-shadow: none !important;
 }
 
@@ -674,7 +736,7 @@ display: none!important;
 }
 
 .category-section{
-    background:#faf8f3;
+    background:rgba(250,248,243,.60);
     position:relative;
 }
 
@@ -693,7 +755,7 @@ display: none!important;
 .section-title{
     font-size:44px;
     font-weight:700;
-    color:#173c26;
+    color:#4e3118;
 }
 
 .section-subtitle{
@@ -795,7 +857,7 @@ display: none!important;
 
 .category-card:hover .category-icon{
 
-    background:#173c26;
+    background:#4e3118;
 }
 
 
@@ -806,7 +868,7 @@ display: none!important;
 
 .marketplaces{
     padding:20px 20px;
-    background:linear-gradient(180deg,#fff,#faf8f3);
+    background:linear-gradient(180deg,rgba(255,255,255,.60),rgba(250,248,243,.60));
     position:relative;
     overflow:hidden;
 }
@@ -881,7 +943,7 @@ display: none!important;
 
 .platform{
     height:130px;
-    background:white;
+    background:rgba(255,255,255,.85);
     border-radius:22px;
     display:flex;
     align-items:center;
@@ -1024,10 +1086,6 @@ display: none!important;
         height: 40px;
         font-size: 16px;
     }
-
-    .display-2 {
-        font-size: 42px !important;
-    }
 }
 
 @media (max-width: 767.98px) {
@@ -1107,10 +1165,6 @@ display: none!important;
 }
 
 @media (max-width: 575.98px) {
-    .navbar-brand img {
-        max-height: 60px;
-    }
-
     .navbar .navbar-collapse {
         padding: 0 1rem;
     }
@@ -1173,27 +1227,60 @@ div#tab-1 {
     margin-top: 20px;
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Open Sans', Arial, sans-serif;
+/* ============================================
+   GLOBAL LAYOUT FOUNDATION
+   ============================================ */
+
+/* Box sizing: keep the border-box model (matches Bootstrap reboot) */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-html, body {
-    font-family:'Open Sans', Arial, sans-serif;
-    color:#333333;
-    line-height:1.6;
-    background:#fafafa;
-    overflow-x: hidden;
-}
-
+/* Root typography: brand face + rem scale */
 html {
+    font-family: 'Open Sans', Arial, sans-serif;
     font-size: 15px;
+    -webkit-text-size-adjust: 100%;
 }
 
+/* Body: Bootstrap handles `margin: 0`; we keep the visual
+   defaults here and deliberately NO `overflow-x` mask so
+   real horizontal overflow can be seen and fixed in the section that
+   causes it. */
 body {
+    font-family: 'Open Sans', Arial, sans-serif;
     font-size: 1rem;
+        color: #333333;
+    line-height: 1.6;
+
+    /* GLOBAL PAGE BACKGROUND
+       Full-site background image. URL is relative to THIS stylesheet
+       (css/style.css) -> resolves to <root>/img/products/bg.jpeg.
+       A deep *warm* dark-brown wash deepens the washed-out photo so the
+       honeycomb pattern reads clearly, while keeping the warm cream
+       palette and text readable (no desaturating/cold gray cast). */
+    background-color: #111111;                 /* fallback beneath image */
+    background-image:
+        linear-gradient(
+            rgba(43, 30, 18, 0.40),
+            rgba(43, 30, 18, 0.34)
+        ),
+        url('../img/products/bg.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;             /* touch devices: iOS ignores `fixed` */
+    -webkit-background-size: cover;            /* responsive safety */
+    -moz-background-size: cover;
+}
+
+/* Fixed attachment only where it performs well (desktop / tablets ≥992px) */
+@media (min-width: 992px) {
+    body {
+        background-attachment: fixed;
+    }
 }
 
 img, svg, video, iframe {
@@ -1205,11 +1292,6 @@ img, svg, video, iframe {
 .dryfruits{
 width:90%;
 margin:60px auto;
-}
-
-h2{
-font-size:36px;
-margin-bottom:25px;
 }
 
 .tabs{
@@ -1344,20 +1426,11 @@ background:#2874f0;
 }
 
 .platform.amazon {
-background:#fff !important;
+background:rgba(255,255,255,.92) !important;
 }
 
 .platform.flipkart {
-background:#fff !important;
-}
-
-.pt-5 {
-    padding-top: 0rem !important;
-}
-
-nav.navbar.navbar-expand-lg.navbar-light.py-lg-0.px-lg-5.wow.fadeIn
- {
-    background: #ded6cb !important;
+background:rgba(255,255,255,.92) !important;
 }
 
 /*==========================
@@ -1365,15 +1438,10 @@ nav.navbar.navbar-expand-lg.navbar-light.py-lg-0.px-lg-5.wow.fadeIn
 ===========================*/
 
 .shola-footer{
-
-    background:#15130f;
-
+    background:rgba(21,19,15,.65);
     color:#d7cbb9;
-
-    padding:3cqmax 0 20px;
-
+    padding: clamp(3rem, 7vw, 4.5rem) 0 1.75rem;
     position:relative;
-
     overflow:hidden;
 }
 
@@ -1484,7 +1552,7 @@ nav.navbar.navbar-expand-lg.navbar-light.py-lg-0.px-lg-5.wow.fadeIn
 
 .footer-links li{
 
-    margin-bottom:14px;
+    margin-bottom:0px;
 
 }
 
@@ -1641,28 +1709,9 @@ nav.navbar.navbar-expand-lg.navbar-light.py-lg-0.px-lg-5.wow.fadeIn
 
 @media(max-width:991px){
 
-.shola-footer{
+.footer-divider{
 
-text-align:center;
-
-}
-
-.footer-heading::after{
-
-margin:auto;
-margin-top:10px;
-
-}
-
-.footer-contact div{
-
-justify-content:center;
-
-}
-
-.shola-footer-promise{
-
-justify-content:center;
+margin:24px 0 18px;
 
 }
 
@@ -1676,7 +1725,7 @@ justify-content:center;
 .shola-explore{
     position:relative;
     padding:90px 0;
-    background:linear-gradient(180deg,#fbfaf8 0%,#f6f2ec 100%);
+    background:linear-gradient(180deg,rgba(251,250,248,.60) 0%,rgba(246,242,236,.60) 100%);
     overflow:hidden;
 }
 
@@ -2474,7 +2523,7 @@ justify-content:center;
 .shola-why{
     position:relative;
     padding:90px 0;
-    background:#ffffff;
+    background:rgba(255,255,255,.60);
     overflow:hidden;
 }
 
@@ -2898,7 +2947,7 @@ padding:24px;
 .shola-collections{
     position:relative;
     padding:90px 0;
-    background:linear-gradient(180deg,#faf8f5 0%,#f4efe7 100%);
+    background:linear-gradient(180deg,rgba(250,248,245,.85) 0%,rgba(244,239,231,.85) 100%);
     overflow:hidden;
 }
 
@@ -3702,12 +3751,8 @@ Typography
 =========================== */
 
 .gh-art{
-
     padding:90px 0;
-
-    background:
-    linear-gradient(180deg,#fbfaf8,#f4f0ea);
-
+    background:linear-gradient(180deg,rgba(251,250,248,.60),rgba(244,240,234,.60));
 }
 
 .gh-art-container{
@@ -3782,7 +3827,7 @@ Typography
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));
 
     gap:24px;
 
@@ -3970,11 +4015,8 @@ padding:28px;
 ===================================*/
 
 .gh-story{
-
     padding:100px 0;
-
-    background:#f9f7f3;
-
+    background:rgba(249,247,243,.60);
 }
 
 .gh-story-container{
@@ -4176,11 +4218,8 @@ font-size:30px;
 ==================================*/
 
 .shola-about{
-
     padding:90px 0;
-
-    background:#faf8f3;
-
+    background:rgba(250,248,243,.60);
 }
 
 .shola-about-image{
@@ -4241,7 +4280,7 @@ font-size:30px;
 
     font-weight:700;
 
-    color:#173c26;
+    color:#4e3118;
 
     line-height:1.2;
 
@@ -4295,7 +4334,7 @@ font-size:30px;
 
 .shola-about-card h4{
 
-    color:#173c26;
+    color:#4e3118;
 
     font-size:22px;
 
@@ -4368,7 +4407,7 @@ padding:20px;
 
     padding:90px 0;
 
-    background:#faf8f3;
+    background:rgba(250,248,243,.60);
 
     overflow:hidden;
 
@@ -4430,7 +4469,7 @@ padding:20px;
 
     font-weight:700;
 
-    color:#173c26;
+    color:#4e3118;
 
     line-height:1.2;
 
@@ -4535,7 +4574,7 @@ Hero Card
 
     font-size:36px;
 
-    color:#173c26;
+    color:#4e3118;
 
     line-height:1.3;
 
@@ -4768,7 +4807,7 @@ Typography
 
     font-size:24px;
 
-    color:#173c26;
+    color:#4e3118;
 
     font-weight:700;
 
@@ -4971,15 +5010,10 @@ font-size:14px;
 ==================================*/
 
 .shola-contact{
-
     position:relative;
-
     padding:90px 0;
-
-    background:#faf8f3;
-
+    background:rgba(250,248,243,.60);
     overflow:hidden;
-
 }
 
 .shola-contact::before{
@@ -5040,7 +5074,7 @@ font-size:14px;
 
     line-height:1.2;
 
-    color:#173c26;
+    color:#4e3118;
 
 }
 
@@ -5097,7 +5131,7 @@ font-size:14px;
 
     font-size:30px;
 
-    color:#173c26;
+    color:#4e3118;
 
     margin-bottom:15px;
 
@@ -5181,7 +5215,7 @@ font-size:14px;
 
     font-size:18px;
 
-    color:#173c26;
+    color:#4e3118;
 
     font-weight:600;
 
@@ -5213,7 +5247,7 @@ Form Inputs
 
     box-shadow:none;
 
-    color:#173c26;
+    color:#4e3118;
 
     font-size:15px;
 
@@ -5575,15 +5609,10 @@ padding:15px;
 ==================================*/
 
 .shola-showcase{
-
     position:relative;
-
     padding:100px 0;
-
-    background:#faf8f3;
-
+    background:rgba(250,248,243,.60);
     overflow:hidden;
-
 }
 
 .shola-showcase::before{
@@ -5667,7 +5696,7 @@ Heading
 
     font-weight:700;
 
-    color:#173c26;
+    color:#4e3118;
 
     line-height:1.2;
 
@@ -5718,7 +5747,7 @@ Tabs
 
     border:1px solid #eee5d8;
 
-    color:#173c26;
+    color:#4e3118;
 
     font-weight:600;
 
@@ -5857,7 +5886,7 @@ Content
 
     font-size:42px;
 
-    color:#173c26;
+    color:#4e3118;
 
     font-weight:700;
 
@@ -5939,7 +5968,7 @@ Button
 
     text-decoration:none;
 
-    background:#173c26;
+    background:#4e3118;
 
     color:#fff;
 
@@ -6103,15 +6132,10 @@ justify-content:center;
 ==================================*/
 
 .shola-wholesale{
-
     position:relative;
-
     padding:90px 0;
-
-    background:#faf8f3;
-
+    background:rgba(250,248,243,.60);
     overflow:hidden;
-
 }
 
 .shola-wholesale::before{
@@ -6197,7 +6221,7 @@ Heading
 
     line-height:1.2;
 
-    color:#173c26;
+    color:#4e3118;
 
 }
 
@@ -6266,7 +6290,7 @@ Hero
 
     font-size:38px;
 
-    color:#173c26;
+    color:#4e3118;
 
     font-weight:700;
 
@@ -6333,7 +6357,7 @@ Checklist
 
     margin-bottom:16px;
 
-    color:#173c26;
+    color:#4e3118;
 
     font-weight:500;
 
@@ -6432,7 +6456,7 @@ Cards
 
     margin:18px 28px 14px;
 
-    color:#173c26;
+    color:#4e3118;
 
     font-size:24px;
 
@@ -6512,7 +6536,7 @@ CTA
 
     linear-gradient(
         135deg,
-        #173c26,
+        #4e3118,
         #245537
     );
 
@@ -6570,7 +6594,7 @@ CTA
 
     background:#fff;
 
-    color:#173c26;
+    color:#4e3118;
 
 }
 
@@ -6678,7 +6702,7 @@ justify-content:center;
 
     padding:90px 0;
 
-    background:#faf8f3;
+    background:rgba(250,248,243,.60);
 
     overflow:hidden;
 
@@ -6765,7 +6789,7 @@ Heading
 
     font-weight:700;
 
-    color:#173c26;
+    color:#4e3118;
 
     line-height:1.2;
 
@@ -7170,15 +7194,10 @@ max-width:94%;
 ==================================*/
 
 .shola-hampers{
-
     position:relative;
-
     padding:100px 0;
-
-    background:#faf8f3;
-
+    background:rgba(250,248,243,.60);
     overflow:hidden;
-
 }
 
 .shola-hampers::before{
@@ -7262,7 +7281,7 @@ Heading
 
     font-weight:700;
 
-    color:#173c26;
+    color:#4e3118;
 
     line-height:1.2;
 
@@ -7313,7 +7332,7 @@ Tabs
 
     border:1px solid #eee5d8;
 
-    color:#173c26;
+    color:#4e3118;
 
     font-weight:600;
 
@@ -7453,7 +7472,7 @@ Content
 
     font-size:42px;
 
-    color:#173c26;
+    color:#4e3118;
 
     font-weight:700;
 
@@ -7545,7 +7564,7 @@ Info Cards
 
 .shola-hamper-info h5{
 
-    color:#173c26;
+    color:#4e3118;
 
     font-size:18px;
 
@@ -7582,7 +7601,7 @@ Button
 
     text-decoration:none;
 
-    background:#173c26;
+    background:#4e3118;
 
     color:#fff;
 
@@ -7728,81 +7747,6 @@ justify-content:center;
 
 }
 
-}
-
-/*==========================
-Section spacing adjustments
-===========================*/
-.page-header,
-.page-header1,
-.shola-explore,
-.shola-why,
-.gh-art-section,
-.gh-story,
-.shola-about,
-.shola-showcase,
-.shola-product,
-.shola-contact,
-.shola-wholesale,
-.shola-hampers,
-.shola-gallery,
-.marketplaces,
-.category-section {
-    padding-top: 30px !important;
-    padding-bottom: 30px !important;
-}
-
-.shola-why-card,
-.shola-collection-card,
-.shola-product-card,
-.gh-art-card,
-.gh-story-card,
-.shola-feature-card,
-.shola-contact-card,
-.shola-hamper-info {
-    padding: 24px !important;
-}
-
-@media (max-width: 991.98px) {
-    .page-header,
-    .page-header1,
-    .shola-explore,
-    .shola-why,
-    .gh-art-section,
-    .gh-story,
-    .shola-about,
-    .shola-showcase,
-    .shola-product,
-    .shola-contact,
-    .shola-wholesale,
-    .shola-hampers,
-    .shola-gallery,
-    .marketplaces,
-    .category-section {
-        padding-top: 50px !important;
-        padding-bottom: 50px !important;
-    }
-}
-
-@media (max-width: 767.98px) {
-    .page-header,
-    .page-header1,
-    .shola-explore,
-    .shola-why,
-    .gh-art-section,
-    .gh-story,
-    .shola-about,
-    .shola-showcase,
-    .shola-product,
-    .shola-contact,
-    .shola-wholesale,
-    .shola-hampers,
-    .shola-gallery,
-    .marketplaces,
-    .category-section {
-        padding-top: 40px !important;
-        padding-bottom: 40px !important;
-    }
 }
 
 /*==========================
@@ -8001,10 +7945,6 @@ h6,
     }
 }
 
-section.shola-collections {
-    padding-top: 30px !important;
-}
-
 .shola-acrylic-section{
 
 padding:120px 8%;
@@ -8094,8 +8034,6 @@ margin:30px 0 25px;
 line-height:1;
 
 color:#33261f;
-
-font-family:Georgia;
 
 }
 
@@ -8382,10 +8320,6 @@ font-size:48px;
 
 }
 
-.nav-gift-toggle a {
-    font-size: 12px !important;
-}
-
 /* ==================================
    PRODUCT SELECTOR
 ================================== */
@@ -8463,4 +8397,705 @@ font-size:48px;
     }
 
 }
+
+
+/* ================================================================
+   DESIGN SYSTEM — TYPOGRAPHY  (canonical)
+   Lives at the END of the stylesheet so these rules normalise the
+   many hard-coded px sizes above via equal-specificity selectors
+   (no !important). Colours stay per-component (brand identity).
+   ================================================================ */
+
+/* Headings base — family / weight / line-height / tracking unified */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: normal;
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1rem; font-weight: 600; }   /* small value labels */
+
+p  { line-height: 1.75; }
+
+/* Page / section titles — h2 level */
+.shola-explore-title,
+.shola-why-title,
+.shola-section-heading,
+.shola-about-title,
+.shola-contact-title,
+.shola-showcase-title,
+.shola-wholesale-title,
+.shola-gallery-title,
+.shola-hampers-title,
+.gh-story-title,
+.gh-art-heading h2,
+.shola-art-overlay h2 {
+    font-size: var(--fs-h2);
+}
+
+/* Footer brand statement — intentionally a step below page titles */
+.shola-footer-title {
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
+    line-height: 1.3;
+}
+
+/* Hero title */
+.shola-main-title {
+    font-size: var(--fs-hero);
+    line-height: 1.15;
+}
+
+/* Card / block titles — h3 level */
+.shola-card-content h3,
+.shola-collection-content h3,
+.shola-hamper-content h3,
+.shola-contact-card h3,
+.shola-wholesale-cta h3,
+.shola-wholesale-hero h3,
+.shola-why-hero h3,
+.gh-art-card h3,
+.gh-story-card h3 {
+    font-size: var(--fs-h3);
+}
+
+/* Small card titles — h4 level */
+.shola-why-card h4,
+.shola-about-card h4,
+.shola-feature-card h4 {
+    font-size: var(--fs-h4);
+}
+
+/* Subtitles / leads — fixes legacy `[class*="title"]` substring match
+   that inflated `.x-subtitle` classes to heading sizes */
+.section-subtitle,
+.gh-art-subtitle,
+.shola-why-subtitle,
+.shola-contact-subtitle,
+.shola-showcase-subtitle,
+.shola-wholesale-subtitle,
+.shola-gallery-subtitle,
+.shola-hampers-subtitle {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: var(--fs-md);
+    line-height: 1.75;
+    letter-spacing: normal;
+}
+
+/* Eyebrow / label / tag chips — one size, weight, tracking, casing */
+.shola-explore-label,
+.shola-why-tag,
+.shola-about-tag,
+.shola-contact-tag,
+.shola-gallery-tag,
+.shola-wholesale-tag,
+.shola-showcase-tag,
+.shola-hampers-tag,
+.shola-section-badge,
+.shola-hero-label,
+.shola-product-category,
+.gh-art-tag,
+.gh-art-heading span,
+.gh-story-tag {
+    font-family: var(--font-body);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Captions / small numeric meta */
+.shola-card-number,
+.shola-count {
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* Body copy on light surfaces — one colour, size and rhythm */
+.shola-about-text,
+.shola-section-text,
+.shola-why-card p,
+.shola-why-hero p,
+.shola-collection-content p,
+.shola-product-content p,
+.shola-wholesale-card p,
+.shola-hamper-content p,
+.gh-art-heading p,
+.gh-art-card p,
+.gh-story-card p {
+    font-size: var(--fs-md);
+    line-height: 1.75;
+    color: var(--text-body);
+}
+
+
+/* ================================================================
+   DESIGN SYSTEM — BUTTONS  (canonical)
+   Shared pill-button foundation + per-surface colour identity.
+   Consistent height, padding, type, radius, icon alignment and
+   hover / focus-visible / active / disabled states everywhere.
+   ================================================================ */
+
+.shola-contact-btn,
+.shola-product-link,
+.shola-wholesale-cta a,
+.shola-art-overlay button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--btn-gap);
+    min-height: var(--btn-min-h);
+    padding: var(--btn-pad-y) var(--btn-pad-x);
+    border: none;
+    border-radius: var(--btn-radius);
+    font-family: var(--btn-font);
+    font-size: var(--fs-md);
+    font-weight: var(--btn-weight);
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: var(--btn-transition);
+}
+
+/* Hover — one consistent lift (colours stay per-surface) */
+.shola-contact-btn:hover,
+.shola-product-link:hover,
+.shola-wholesale-cta a:hover,
+.shola-art-overlay button:hover {
+    transform: translateY(-3px);
+}
+
+/* Icon alignment & nudge */
+.shola-contact-btn i,
+.shola-product-link i,
+.shola-wholesale-cta a i,
+.shola-art-overlay button i {
+    transition: transform .3s ease;
+}
+
+.shola-contact-btn:hover i,
+.shola-product-link:hover i,
+.shola-wholesale-cta a:hover i {
+    transform: translateX(5px);
+}
+
+/* Active / pressed */
+.shola-contact-btn:active,
+.shola-product-link:active,
+.shola-wholesale-cta a:active,
+.shola-art-overlay button:active {
+    transform: translateY(0) scale(.98);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
+}
+
+/* Focus — visible keyboard ring */
+.shola-contact-btn:focus-visible,
+.shola-product-link:focus-visible,
+.shola-wholesale-cta a:focus-visible,
+.shola-art-overlay button:focus-visible {
+    outline: none;
+    box-shadow: var(--btn-focus-ring);
+}
+
+/* Selection controls — collection tabs & product selector */
+.shola-tab,
+.shola-product-selector {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    border-radius: var(--btn-radius);
+    font-family: var(--btn-font);
+    font-size: var(--fs-base);
+    font-weight: var(--btn-weight);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: var(--btn-transition);
+}
+
+.shola-tab:focus-visible,
+.shola-product-selector:focus-visible {
+    outline: none;
+    box-shadow: var(--btn-focus-ring);
+}
+
+.shola-tab:active,
+.shola-product-selector:active {
+    transform: translateY(0) scale(.97);
+}
+
+/* Global focus visibility for links & form controls */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: var(--link-focus);
+    outline-offset: 2px;
+}
+
+/* Disabled states */
+button:disabled,
+button[disabled],
+[aria-disabled="true"],
+.btn.disabled,
+.btn[disabled] {
+    opacity: .55;
+    pointer-events: none;
+    cursor: not-allowed;
+    filter: grayscale(.25);
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Mobile usability — primary CTAs become full-width targets */
+@media (max-width: 767.98px) {
+
+    .shola-contact-btn,
+    .shola-product-link,
+    .shola-wholesale-cta a {
+        width: 100%;
+        padding: var(--btn-pad-y) 1.25rem;
+    }
+
+    .shola-tab,
+    .shola-product-selector {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+
+/* ================================================================
+   DESIGN SYSTEM — LAYOUT & SECTION RHYTHM  (canonical)
+   One vertical rhythm + one content rail for every main section.
+   Fluid clamp() covers phone → 4K intentionally (no breakpoint
+   shrinking of the desktop version).
+   ================================================================ */
+
+:root {
+    --section-pad: clamp(3.5rem, 8vw, 6rem);   /* 56px → 96px */
+    --container-gutter: calc(var(--bs-gutter-x, 1.5rem) * 0.5);
+
+    /* Content rail mirrors Bootstrap .container EXACTLY, so custom
+       containers stay pixel-aligned with every .container section */
+    --rail: 100%;
+}
+
+@media (min-width: 576px)  { :root { --rail: 540px; } }
+@media (min-width: 768px)  { :root { --rail: 720px; } }
+@media (min-width: 992px)  { :root { --rail: 960px; } }
+@media (min-width: 1200px) { :root { --rail: 1140px; } }
+@media (min-width: 1400px) { :root { --rail: 1320px; } }
+
+/* Every main section shares one vertical rhythm */
+.shola-explore,
+.shola-collections,
+.shola-why,
+.shola-about,
+.shola-contact,
+.shola-showcase,
+.shola-wholesale,
+.shola-gallery,
+.gh-story,
+.gh-art-section,
+.gh-art,
+.shola-acrylic-section {
+    padding-top: var(--section-pad);
+    padding-bottom: var(--section-pad);
+}
+
+/* One shared content rail for the custom containers
+   (previously width:90%/92% with mismatched max-widths) */
+.gh-story-container,
+.gh-art-container,
+.shola-acrylic-container {
+    width: 100%;
+    max-width: var(--rail);
+    margin-inline: auto;
+    padding-inline: var(--container-gutter);
+}
+
+/* Card padding fallback — zero specificity (:where), so it only
+   fills genuine gaps and always yields to component paddings */
+:where(.shola-why-card,
+       .shola-collection-card,
+       .shola-product-card,
+       .gh-art-card,
+       .gh-story-card,
+       .shola-feature-card,
+       .shola-contact-card,
+       .shola-hamper-info) {
+    padding: 28px;
+}
+
+/* --------------------------------------------------------------
+   Responsive stacking — tablet (768–991px) collapses together
+   with the rest of the lg grid instead of shrinking the desktop
+   two-column layout.
+   -------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+
+    /* Product showcase: image above details, centered */
+    .shola-product-view {
+        grid-template-columns: 1fr;
+    }
+    .shola-product-content { text-align: center; }
+    .shola-product-features { justify-content: center; }
+
+    /* Story split */
+    .gh-story-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Callout cards breathe on tablets */
+    .shola-why-hero { padding: 32px; }
+}
+
+/* --------------------------------------------------------------
+   Small phones — soften overlaps/compacts deliberately
+   -------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+
+    /* Glass overlay overlap softens on narrow screens */
+    .shola-art-overlay {
+        margin: -48px 16px 0;
+        padding: 22px;
+    }
+
+    /* Callout / hero cards compact */
+    .shola-why-hero,
+    .shola-wholesale-hero {
+        padding: 24px;
+        border-radius: 22px;
+    }
+}
+
+
+/* ================================================================
+   DESIGN SYSTEM — CARDS & GRIDS  (canonical)
+   One geometry language for every repeated card surface:
+   radius, padding, shadow, hover lift, chip shape, grid gaps.
+   Per-surface backgrounds/borders (glass vs solid) stay intact.
+   ================================================================ */
+
+/* Standard solid-interior cards — shared geometry */
+.shola-collection-card,
+.shola-why-card,
+.shola-feature-card,
+.shola-about-card,
+.shola-contact-card,
+.shola-contact-form,
+.gh-glass-card,
+.gh-story-card {
+    border-radius: var(--radius-lg);
+    padding: var(--card-pad);
+    box-shadow: var(--shadow-1);
+}
+
+/* Media-frame cards (full-bleed image top) — frame normalized only;
+   their internal text blocks own the padding */
+.shola-collection-item,
+.shola-wholesale-card {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-1);
+}
+
+/* Feature frame keeps a slightly larger radius */
+.shola-art-card {
+    border-radius: var(--radius-xl);
+}
+
+/* One consistent hover for all cards */
+.shola-collection-item:hover,
+.shola-why-card:hover,
+.shola-feature-card:hover,
+.shola-about-card:hover,
+.shola-contact-card:hover,
+.shola-contact-form:hover,
+.gh-glass-card:hover,
+.gh-story-card:hover,
+.shola-wholesale-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-2);
+}
+
+/* Chips share one pill shape */
+.shola-item-list span,
+.shola-product-category,
+.shola-product-features span {
+    border-radius: 999px;
+}
+
+/* Grid gaps on one token */
+.gh-art-grid { gap: var(--grid-gap); }
+
+/* Two-column splits breathe fluidly */
+.gh-story-container,
+.shola-acrylic-container,
+.shola-product-view {
+    gap: var(--split-gap);
+}
+
+/* --------------------------------------------------------------
+   Responsive behavior
+   -------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+
+    /* Small info tiles stack instead of squeezing two-up */
+    .shola-info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ================================================================
+   DESIGN SYSTEM — FOOTER  (canonical)
+   Left-aligned columns at every width; brand / links / contact
+   share the site rail (.container); consistent chips & credit.
+   ================================================================ */
+
+/* Column heads: restore intended serif presence
+   (legacy global group was shrinking them to body size) */
+.footer-heading {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+/* Contact icon column never squashes; rows keep icon+text pairs */
+.footer-contact i { flex-shrink: 0; }
+
+/* Links: comfortable tap targets, tidy list end */
+.footer-links a { padding: 2px 0; }
+.footer-links li:last-child { margin-bottom: 0; }
+
+/* Promise strip: pill token + fluid type + steady top spacing */
+.shola-footer-promise span {
+    border-radius: var(--btn-radius);
+    font-size: var(--fs-sm);
+    letter-spacing: .2px;
+}
+.promise-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.shola-footer-promise i { margin-right: 0; }
+.shola-footer-promise { margin-top: clamp(4px, 1.5vw, 16px); }
+
+
+/* ================================================================
+   DESIGN SYSTEM — IMAGES, ICONS & FORMS  (canonical)
+   Ratio-locked media, squish-proof icons, one accessible form kit.
+   ================================================================ */
+
+:root {
+    --danger: #b3261e;
+}
+
+/* ---------- Images / media ---------- */
+
+/* Collection tiles: fluid ratio instead of fixed px heights
+   (kills CLS and removes three breakpoint height hacks) */
+.shola-collection-image {
+    height: auto;
+    aspect-ratio: 3 / 2;
+}
+
+/* Supply-card photos lock to their native 10:7 */
+.shola-wholesale-card > img {
+    width: 100%;
+    aspect-ratio: 10 / 7;
+    object-fit: cover;
+    display: block;
+}
+
+/* Wide-media guard extends the global fluid rule */
+embed,
+object,
+audio {
+    max-width: 100%;
+}
+
+/* Icon bubbles never get squashed by tight flex rows */
+.shola-contact-icon,
+.shola-why-icon,
+.shola-feature-icon,
+.shola-strip-left i,
+.shola-strip-right,
+.shola-arrow,
+.gh-art-icon {
+    flex-shrink: 0;
+}
+
+/* Why-section center badge marks (inline styles removed from HTML) */
+.shola-badge-mark {
+    max-height: clamp(96px, 12vw, 150px);
+    width: auto;
+}
+.shola-badge-text {
+    max-height: clamp(60px, 9vw, 100px);
+    width: auto;
+}
+
+/* ---------- Forms ---------- */
+
+.shola-input {
+    border-radius: var(--radius-md);
+}
+
+textarea.shola-input {
+    height: auto;
+    min-height: 170px;
+    line-height: 1.6;
+}
+
+/* Future-proof control kit (matches .shola-input language) */
+select.shola-input {
+    appearance: none;
+    padding-right: 44px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23b98b4d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+}
+
+.shola-check {
+    width: 18px;
+    height: 18px;
+    accent-color: #b98b4d;
+    vertical-align: middle;
+}
+input[type="checkbox"].shola-check { border-radius: 6px; }
+input[type="radio"].shola-check { border-radius: 50%; }
+
+/* Validation states — native, JS-free */
+.shola-input:user-invalid,
+.shola-input.is-invalid,
+.shola-input[aria-invalid="true"] {
+    border-color: var(--danger);
+    background-color: #fff6f5;
+}
+
+.shola-input:user-invalid:focus,
+.shola-input.is-invalid:focus,
+.shola-input[aria-invalid="true"]:focus {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 4px rgba(179, 38, 30, 0.14);
+}
+
+/* Inline error messages (shown only when the field is invalid) */
+.shola-field-msg {
+    display: none;
+    margin: 8px 2px 0;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--danger);
+}
+
+.shola-input:user-invalid ~ .shola-field-msg,
+.shola-input.is-invalid ~ .shola-field-msg,
+.shola-input[aria-invalid="true"] ~ .shola-field-msg {
+    display: block;
+}
+
+@media (max-width: 575.98px) {
+    .shola-field-msg { margin-top: 6px; }
+}
+
+
+/* ================================================================
+   MOBILE QA HARDENING  (canonical — keep last)
+   Dedicated pass for 320 / 360 / 375 / 390 / 414 / 480 px.
+   Readability floors, touch targets, dense-block compaction,
+   long-string safety. Sits at EOF so its phone rules win the
+   cascade over every earlier base style.
+   ================================================================ */
+
+/* ---- Tiny text: readable floors on phones ---- */
+@media (max-width: 767.98px) {
+
+    /* Inline error messages stop at ~12px instead of ~10px */
+    .shola-field-msg {
+        font-size: var(--fs-base);
+        line-height: 1.45;
+    }
+
+    /* 16px inputs prevent iOS focus zoom across all phones */
+    .shola-input,
+    textarea.shola-input {
+        font-size: 16px;
+    }
+}
+
+/* ---- Touch targets ---- */
+
+/* Footer links: ~36px target, ~50px pitch with list spacing */
+.footer-links a { padding: 7px 0; }
+
+@media (max-width: 767.98px) {
+    .footer-links a { padding: 9px 0; }
+}
+
+/* Carousel dots: taller invisible hit area around the visible bar */
+.carousel-indicators [data-bs-target] {
+    border-top-width: 13px;
+    border-bottom-width: 13px;
+}
+
+/* Header pills keep a consistent minimum even on hover-lift */
+.gift-pill { min-height: 36px; }
+
+/* ---- Dense blocks compact on phones ---- */
+@media (max-width: 575.98px) {
+
+    .shola-wholesale-cta {
+        padding: 32px 22px;
+        border-radius: 22px;
+    }
+
+    .shola-wholesale-cta h3 {
+        margin-bottom: 12px;
+    }
+}
+
+/* ---- Long-string safety (emails, addresses) ---- */
+.footer-contact a,
+.footer-contact span,
+.shola-contact-item h6 {
+    overflow-wrap: anywhere;
+}
+
+
+/* ================================================================
+   TABLET & DESKTOP QA  (canonical — keep last)
+   ================================================================ */
+
+/* Header content rides the same stepped rail as page sections,
+   so pills / logo / links line up with the content edges below.
+   Bar backgrounds (white bar + tan navbar) stay full-bleed. */
+@media (min-width: 992px) {
+
+    .container-fluid.fixed-top nav.navbar > .container-fluid,
+    .container-fluid.fixed-top > .top-bar {
+        margin-inline: auto;
+        padding-inline: var(--container-gutter);
+    }
+}
+
+
 
