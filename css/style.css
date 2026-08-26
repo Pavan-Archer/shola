@@ -736,7 +736,7 @@ display: none!important;
 }
 
 .category-section{
-    background:rgba(250,248,243,.60);
+    background:transparent;
     position:relative;
 }
 
@@ -868,7 +868,7 @@ display: none!important;
 
 .marketplaces{
     padding:20px 20px;
-    background:linear-gradient(180deg,rgba(255,255,255,.60),rgba(250,248,243,.60));
+    background:transparent;
     position:relative;
     overflow:hidden;
 }
@@ -1725,7 +1725,6 @@ margin:24px 0 18px;
 .shola-explore{
     position:relative;
     padding:90px 0;
-    background:linear-gradient(180deg,rgba(251,250,248,.60) 0%,rgba(246,242,236,.60) 100%);
     overflow:hidden;
 }
 
@@ -2947,7 +2946,6 @@ padding:24px;
 .shola-collections{
     position:relative;
     padding:90px 0;
-    background:linear-gradient(180deg,rgba(250,248,245,.85) 0%,rgba(244,239,231,.85) 100%);
     overflow:hidden;
 }
 
@@ -3752,7 +3750,7 @@ Typography
 
 .gh-art{
     padding:90px 0;
-    background:linear-gradient(180deg,rgba(251,250,248,.60),rgba(244,240,234,.60));
+    background:transparent;
 }
 
 .gh-art-container{
@@ -4016,7 +4014,7 @@ padding:28px;
 
 .gh-story{
     padding:100px 0;
-    background:rgba(249,247,243,.60);
+    background:transparent;
 }
 
 .gh-story-container{
@@ -4219,7 +4217,7 @@ font-size:30px;
 
 .shola-about{
     padding:90px 0;
-    background:rgba(250,248,243,.60);
+    background:transparent;
 }
 
 .shola-about-image{
@@ -4406,8 +4404,6 @@ padding:20px;
     position:relative;
 
     padding:90px 0;
-
-    background:rgba(250,248,243,.60);
 
     overflow:hidden;
 
@@ -5012,7 +5008,6 @@ font-size:14px;
 .shola-contact{
     position:relative;
     padding:90px 0;
-    background:rgba(250,248,243,.60);
     overflow:hidden;
 }
 
@@ -5611,7 +5606,6 @@ padding:15px;
 .shola-showcase{
     position:relative;
     padding:100px 0;
-    background:rgba(250,248,243,.60);
     overflow:hidden;
 }
 
@@ -6134,7 +6128,6 @@ justify-content:center;
 .shola-wholesale{
     position:relative;
     padding:90px 0;
-    background:rgba(250,248,243,.60);
     overflow:hidden;
 }
 
@@ -6532,13 +6525,12 @@ CTA
 
     border-radius:32px;
 
-    background:
-
-    linear-gradient(
+    background: linear-gradient(
         135deg,
-        #4e3118,
-        #245537
+        rgba(255,255,255,.82),
+        rgba(255,255,255,.60)
     );
+
 
     color:#fff;
 
@@ -6702,7 +6694,7 @@ justify-content:center;
 
     padding:90px 0;
 
-    background:rgba(250,248,243,.60);
+    
 
     overflow:hidden;
 
@@ -7951,8 +7943,7 @@ padding:120px 8%;
 position:relative;
 overflow:hidden;
 
-background:
-linear-gradient(135deg,#fbf7f2,#efe3d2);
+background:transparent;
 
 }
 
