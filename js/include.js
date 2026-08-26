@@ -48,9 +48,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
+    // ------------------------------------------------------------------
+    // Universal gift tabs (Hampers / Bulk Orders / Art Studio)
+    //
+    // Single source of truth: each tab maps to a host page + a query key.
+    // The host page renders that tab's content. When a tab is clicked we
+    // first try to toggle the content in place (the existing Home behaviour).
+    // If the content isn't present on the current page, we navigate to the
+    // host page carrying the query key so the right tab is shown. This makes
+    // the three buttons behave identically on every page via the one shared
+    // header, with no page-specific hardcoding.
+    // ------------------------------------------------------------------
+    const GIFT_TABS = {
+        hampersTab:   { target: 'index.html', key: 'hampers' },
+        bulkTab:      { target: 'index.html', key: 'bulk' },
+        artStudioTab: { target: 'index.html', key: 'art' },
+    };
+
     const setActiveGiftTab = (tabId) => {
-        const tabs = ['hampersTab', 'bulkTab', 'artStudioTab'];
-        tabs.forEach((id) => {
+        Object.keys(GIFT_TABS).forEach((id) => {
             const tab = document.getElementById(id);
             if (!tab) return;
             if (id === tabId) {
@@ -63,12 +79,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     };
 
+    // Toggle the tab content on pages that host it (Home). Returns true when
+    // the content was handled in place, false when it must be navigated to.
     const showTabContent = (tabId) => {
         const defaultContent = document.getElementById('default-content');
         const artStudioContent = document.getElementById('art-studio-content');
 
         if (!defaultContent || !artStudioContent) {
-            return;
+            return false;
         }
 
         if (tabId === 'artStudioTab') {
@@ -79,11 +97,11 @@ document.addEventListener('DOMContentLoaded', function () {
             artStudioContent.classList.add('d-none');
             defaultContent.classList.remove('d-none');
         }
+        return true;
     };
 
     const setupGiftTabs = () => {
-        const tabs = ['hampersTab', 'bulkTab', 'artStudioTab'];
-        tabs.forEach((id) => {
+        Object.entries(GIFT_TABS).forEach(([id, config]) => {
             const tab = document.getElementById(id);
             if (!tab) {
                 return;
@@ -91,14 +109,36 @@ document.addEventListener('DOMContentLoaded', function () {
             tab.addEventListener('click', (event) => {
                 event.preventDefault();
                 setActiveGiftTab(id);
-                showTabContent(id);
+                const handledInPlace = showTabContent(id);
+                if (!handledInPlace) {
+                    window.location.href = config.target + '?tab=' + config.key;
+                }
             });
         });
+    };
+
+    // When arriving at a host page via a gift tab link (?tab=...), restore
+    // the active pill and show that page's content.
+    const applyQueryTab = () => {
+        const params = new URLSearchParams(window.location.search);
+        const tabKey = params.get('tab');
+        if (!tabKey) {
+            return;
+        }
+        const entry = Object.entries(GIFT_TABS).find(function (pair) {
+            return pair[1].key === tabKey;
+        });
+        if (!entry) {
+            return;
+        }
+        setActiveGiftTab(entry[0]);
+        showTabContent(entry[0]);
     };
 
     const initIncludes = async () => {
         await loadIncludes();
         setupGiftTabs();
+        applyQueryTab();
         document.dispatchEvent(new Event('includesLoaded'));
     };
 
