@@ -17,9 +17,9 @@
   // Fixed Navbar — simplified to avoid layout shifts
   $(window).on("scroll resize", function () {
     if ($(this).scrollTop() > 45) {
-      $(".fixed-top").addClass("bg-dark shadow");
+      $(".fixed-top").addClass("bg-white shadow");
     } else {
-      $(".fixed-top").removeClass("bg-dark shadow");
+      $(".fixed-top").removeClass("bg-white shadow");
     }
   });
 
