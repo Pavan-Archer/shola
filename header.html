@@ -274,13 +274,179 @@
         }
 
         /* ---- Small phones (< 576px) ---- */
-        @media (max-width: 575.98px) {
+        @media only screen and (max-width: 575.98px) {
+            /* Prevent horizontal scrolling */
+            html,
+            body {
+                overflow-x: hidden;
+            }
+
+            /* Single row header: hide gift toggle, keep logo + hamburger */
+            .nav-gift-toggle {
+                display: none !important;
+            }
+
+            .nav-left {
+                display: none !important;
+            }
+
+            /* Make logo and hamburger share one row */
+            .nav-center-logo {
+                flex: 1;
+                justify-content: flex-start !important;
+                padding-left: 0.5rem;
+            }
+
+            .nav-right {
+                flex: 0 0 auto;
+            }
+
+            /* Larger mobile logo */
             .shola-logo-img {
-                max-height: 52px;
+                max-height: 68px;
+                width: auto;
+            }
+
+            /* Jet-black hamburger button with orange accent */
+            .navbar-toggler {
+                background: #000 !important;
+                border: 2px solid #F28C28 !important;
+                border-radius: 10px !important;
+                padding: 0.5rem 0.6rem !important;
+                min-height: 44px;
+                min-width: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .navbar-toggler:focus {
+                box-shadow: 0 0 0 3px rgba(242, 140, 40, 0.4) !important;
+            }
+
+            /* Orange hamburger icon */
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23F28C28' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+                width: 1.4em;
+                height: 1.4em;
+            }
+
+            /* Mobile navigation menu - single clean panel */
+            #navbarCollapse {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                z-index: 1050;
+                background: #ffffff;
+                border-radius: 0 0 16px 16px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+                margin-top: 0;
             }
 
             #navbarCollapse .navbar-nav {
-                padding: .5rem .75rem !important;
+                padding: 0.75rem 1rem 1.5rem !important;
+                width: 100%;
+            }
+
+            #navbarCollapse .navbar-nav .nav-link {
+                padding: 0.9rem 0.75rem !important;
+                font-size: 1rem;
+                color: #0A0A0A !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                border-radius: 8px;
+            }
+
+            #navbarCollapse .navbar-nav .nav-link:last-of-type {
+                border-bottom: none;
+            }
+
+            #navbarCollapse .navbar-nav .nav-link:hover,
+            #navbarCollapse .navbar-nav .nav-link.active {
+                background: rgba(242, 140, 40, 0.08);
+                color: #F28C28 !important;
+                border-radius: 8px;
+            }
+
+            /* Ensure navbar doesn't cause overflow */
+            .navbar .container-fluid {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+
+            .navbar .row {
+                flex-wrap: nowrap;
+            }
+        }
+
+        /* ---- Floating bottom navigation (mobile only) ---- */
+        .mobile-floating-nav {
+            display: none;
+        }
+
+        @media only screen and (max-width: 575.98px) {
+            .mobile-floating-nav {
+                display: flex;
+                position: fixed;
+                bottom: 12px;
+                left: 10px;
+                right: 10px;
+                z-index: 1060;
+                background: #0A0A0A;
+                border-radius: 16px;
+                padding: 6px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(242, 140, 40, 0.2);
+                justify-content: space-between;
+                align-items: center;
+                gap: 4px;
+                padding-bottom: max(6px, env(safe-area-inset-bottom));
+                bottom: max(12px, calc(12px + env(safe-area-inset-bottom)));
+            }
+
+            .mobile-floating-nav .mobile-nav-btn {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 8px;
+                border-radius: 12px;
+                text-decoration: none;
+                color: #C9C9C9;
+                font-size: 0.7rem;
+                font-weight: 600;
+                text-align: center;
+                transition: all 0.3s ease;
+                border: none;
+                background: transparent;
+                cursor: pointer;
+                min-height: 56px;
+            }
+
+            .mobile-floating-nav .mobile-nav-btn i {
+                font-size: 1.1rem;
+                margin-bottom: 4px;
+                color: #C9C9C9;
+                transition: color 0.3s ease;
+            }
+
+            .mobile-floating-nav .mobile-nav-btn.active {
+                background: #F28C28;
+                color: #fff;
+            }
+
+            .mobile-floating-nav .mobile-nav-btn.active i {
+                color: #fff;
+            }
+
+            .mobile-floating-nav .mobile-nav-btn:not(.active):hover {
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            /* Add padding to body to prevent content being hidden behind floating nav */
+            body {
+                padding-bottom: 80px;
             }
         }
     </style>
@@ -320,6 +486,22 @@
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Floating Bottom Navigation (visible only on mobile) -->
+    <div class="mobile-floating-nav" id="mobileFloatingNav">
+        <button type="button" class="mobile-nav-btn active" id="mobileHampersBtn" data-tab="hampersTab">
+            <i class="fa fa-heart"></i>
+            <span>Hampers</span>
+        </button>
+        <button type="button" class="mobile-nav-btn" id="mobileBulkBtn" data-tab="bulkTab">
+            <i class="fa fa-briefcase"></i>
+            <span>Bulk Orders</span>
+        </button>
+        <button type="button" class="mobile-nav-btn" id="mobileArtStudioBtn" data-tab="artStudioTab">
+            <i class="fa fa-paint-brush"></i>
+            <span>Art Studio</span>
+        </button>
+    </div>
 
 </div>
 

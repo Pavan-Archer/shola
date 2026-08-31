@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // header, with no page-specific hardcoding.
     // ------------------------------------------------------------------
     const GIFT_TABS = {
-        hampersTab:   { target: 'index.html', key: 'hampers' },
-        bulkTab:      { target: 'index.html', key: 'bulk' },
-        artStudioTab: { target: 'index.html', key: 'art' },
+        hampersTab:   { target: 'products.html', key: 'hampers' },
+        bulkTab:      { target: 'wholesale.html', key: 'bulk' },
+        artStudioTab: { target: 'gallery.html', key: 'art' },
     };
 
     const setActiveGiftTab = (tabId) => {
@@ -109,9 +109,42 @@ document.addEventListener('DOMContentLoaded', function () {
             tab.addEventListener('click', (event) => {
                 event.preventDefault();
                 setActiveGiftTab(id);
-                const handledInPlace = showTabContent(id);
-                if (!handledInPlace) {
-                    window.location.href = config.target + '?tab=' + config.key;
+                syncMobileFloatingNav(id);
+                // Always navigate to the target page
+                window.location.href = config.target;
+            });
+        });
+    };
+
+    // Sync mobile floating nav active state with desktop gift tabs
+    const syncMobileFloatingNav = (activeTabId) => {
+        const mobileBtns = document.querySelectorAll('.mobile-nav-btn');
+        mobileBtns.forEach((btn) => {
+            if (btn.dataset.tab === activeTabId) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    };
+
+    // Setup mobile floating nav button click handlers
+    // Mobile buttons always navigate to their respective pages
+    const setupMobileFloatingNav = () => {
+        const mobileBtns = document.querySelectorAll('.mobile-nav-btn');
+        mobileBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const targetTabId = btn.dataset.tab;
+                if (!targetTabId) return;
+
+                // Update both desktop and mobile active states
+                setActiveGiftTab(targetTabId);
+                syncMobileFloatingNav(targetTabId);
+
+                // Always navigate to the target page on mobile
+                const config = GIFT_TABS[targetTabId];
+                if (config) {
+                    window.location.href = config.target;
                 }
             });
         });
@@ -135,10 +168,33 @@ document.addEventListener('DOMContentLoaded', function () {
         showTabContent(entry[0]);
     };
 
+    // Set active button based on current page
+    const setActiveButtonByPage = () => {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        // Remove query string if present
+        const cleanPage = currentPage.split('?')[0];
+
+        // Find which tab matches the current page
+        let activeTabId = null;
+        Object.entries(GIFT_TABS).forEach(([id, config]) => {
+            if (config.target === cleanPage) {
+                activeTabId = id;
+            }
+        });
+
+        // If we found a matching tab, set it as active
+        if (activeTabId) {
+            setActiveGiftTab(activeTabId);
+            syncMobileFloatingNav(activeTabId);
+        }
+    };
+
     const initIncludes = async () => {
         await loadIncludes();
         setupGiftTabs();
+        setupMobileFloatingNav();
         applyQueryTab();
+        setActiveButtonByPage();
         document.dispatchEvent(new Event('includesLoaded'));
     };
 
