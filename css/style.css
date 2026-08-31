@@ -9088,5 +9088,7 @@ input[type="radio"].shola-check { border-radius: 50%; }
     }
 }
 
-
+.nav-gift-toggle a {
+    font-size: 12px !important;
+}
 
