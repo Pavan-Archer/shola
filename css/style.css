@@ -1,4 +1,4 @@
-﻿/********** Template CSS **********/
+/********** Template CSS **********/
 :root {
     --primary: #F28C28;
     --secondary: #F28C28;
@@ -10,16 +10,16 @@
     --font-display: 'Lora', 'Open Sans', serif;
     --font-body: 'Open Sans', Arial, sans-serif;
 
-    /* Type scale (rem — relative to the 15/14/13px root scale) */
+    /* Type scale (rem � relative to the 15/14/13px root scale) */
     --fs-xs: 0.75rem;          /* ~11px  captions */
     --fs-sm: 0.85rem;         /* ~12px  labels / badge chips */
     --fs-base: 0.95rem;       /* ~14px  base UI text */
     --fs-md: 1rem;            /* ~15px  paragraphs / buttons */
-    --fs-h4: clamp(1.1rem, 1.6vw, 1.3rem);   /* ~17–20px */
-    --fs-h3: clamp(1.3rem, 2vw, 1.6rem);     /* ~20–24px */
-    --fs-h2: clamp(1.6rem, 2.8vw, 2.5rem);   /* ~25–38px */
-    --fs-h1: clamp(2rem, 3.4vw, 2.8rem);     /* ~30–42px */
-    --fs-hero: clamp(2.6rem, 4.5vw, 4rem);   /* ~39–60px hero titles */
+    --fs-h4: clamp(1.1rem, 1.6vw, 1.3rem);   /* ~17�20px */
+    --fs-h3: clamp(1.3rem, 2vw, 1.6rem);     /* ~20�24px */
+    --fs-h2: clamp(1.6rem, 2.8vw, 2.5rem);   /* ~25�38px */
+    --fs-h1: clamp(2rem, 3.4vw, 2.8rem);     /* ~30�42px */
+    --fs-hero: clamp(2.6rem, 4.5vw, 4rem);   /* ~39�60px hero titles */
 
     /* Text colors */
     --text-strong: #F2F2F2;
@@ -60,6 +60,89 @@
     z-index: 99;
 }
 
+
+/* =========================
+   WhatsApp Floating Button
+   ========================= */
+.whatsapp-float {
+    position: fixed;
+    right: 30px;
+    bottom: 90px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #25D366;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+    text-decoration: none;
+    z-index: 3000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.whatsapp-float__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.whatsapp-float__icon svg {
+    display: block;
+    width: 28px;
+    height: 28px;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float__text {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    max-width: 0;
+    opacity: 0;
+    padding-left: 0;
+    letter-spacing: 0.02em;
+    transition: max-width 0.3s ease, opacity 0.3s ease, padding-left 0.3s ease;
+    overflow: hidden;
+}
+
+.whatsapp-float:hover {
+    background-color: #1ebe5d;
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.whatsapp-float:hover .whatsapp-float__icon svg {
+
+    transform: scale(1.1);
+}
+
+.whatsapp-float:hover .whatsapp-float__text {
+    max-width: 140px;
+    opacity: 1;
+    padding-left: 8px;
+    /* tooltip for right-side button */
+}
+
+/* Keep it circular icon only on mobile/tablets */
+@media (max-width: 991.98px) {
+    .whatsapp-float:hover .whatsapp-float__text {
+        max-width: 0;
+        opacity: 0;
+        padding-left: 0;
+    }
+    .whatsapp-float:hover {
+        transform: translateY(-3px);
+    }
+}
 .my-6 {
     margin-top: 6rem;
     margin-bottom: 6rem;
@@ -112,104 +195,12 @@
 
 .btn.btn-primary:hover,
 .btn.btn-primary:focus,
-.btn.btn-primary:active,
-.btn.btn-primary:not(:disabled):not(.disabled):active {
-    background-color: #E07B1F;
-    border-color: #E07B1F;
+.btn.btn-primary:active {
+    background-color: #F28C28;
+    border-color: #F28C28;
     color: #0A0A0A;
 }
 
-.btn-square {
-    width: 38px;
-    height: 38px;
-}
-
-.btn-sm-square {
-    width: 32px;
-    height: 32px;
-}
-
-.btn-lg-square {
-    width: 48px;
-    height: 48px;
-}
-
-.btn-square,
-.btn-sm-square,
-.btn-lg-square {
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: normal;
-}
-
-
-/*** Navbar ***/
-.fixed-top {
-    transition: .5s;
-}
-
-.top-bar {
-    background: #000000;
-    height: 45px;
-    border-bottom: 1px solid rgba(0, 0, 0, .07);
-}
-
-.navbar .dropdown-toggle::after {
-    border: none;
-    content: "\f107";
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-weight: 900;
-    vertical-align: middle;
-    margin-left: 8px;
-}
-
-.navbar .navbar-nav .nav-link {
-    padding: 25px 15px;
-    color: #C9C9C9;
-    font-weight: 500;
-    outline: none;
-}
-
-.navbar .navbar-nav .nav-link:hover,
-.navbar .navbar-nav .nav-link.active {
-    color: #F28C28;
-    font-weight: bold;
-}
-
-@media (max-width: 991.98px) {
-    .navbar .navbar-nav {
-        margin-top: 10px;
-        border-top: 1px solid rgba(0, 0, 0, .07);
-        background: #141414;
-    }
-
-    .navbar .navbar-nav .nav-link {
-        padding: 10px 0;
-    }
-}
-
-@media (min-width: 992px) {
-    /* smoother dropdown: fade + slide instead of 3D rotate */
-    .navbar .nav-item .dropdown-menu {
-        display: block;
-        visibility: hidden;
-        top: 100%;
-        transform: translateY(8px);
-        transition: transform .18s ease, opacity .18s ease;
-        opacity: 0;
-        z-index: 2050;
-        min-width: 220px;
-    }
-
-    .navbar .nav-item:hover .dropdown-menu {
-        transform: translateY(0);
-        visibility: visible;
-        opacity: 1;
-        color: #F28C28; 
-    }
-}
 
 /* General navbar/dropdown styling */
 .navbar {
@@ -1290,7 +1281,7 @@ body {
     -moz-background-size: cover;
 }
 
-/* Fixed attachment only where it performs well (desktop / tablets ≥992px) */
+/* Fixed attachment only where it performs well (desktop / tablets =992px) */
 @media (min-width: 992px) {
     body {
         background-attachment: fixed;
@@ -8113,6 +8104,79 @@ border-radius:28px;
 display:block;
 
 }
+/* ----- Shola art image carousel (Bootstrap-based, per-card slider) ------- */
+.shola-art-carousel{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 939 / 782;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #141414;
+}
+
+.shola-art-carousel .carousel-inner,
+.shola-art-carousel .carousel-item{
+    height: 100%;
+}
+
+.shola-art-carousel .carousel-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+/* keep controls & dots above the glass overlay */
+.shola-art-carousel .carousel-control-prev,
+.shola-art-carousel .carousel-control-next,
+.shola-art-carousel .carousel-indicators{
+    z-index: 3;
+}
+
+/* round, subtle prev/next buttons */
+.shola-art-carousel .carousel-control-prev,
+.shola-art-carousel .carousel-control-next{
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: rgba(10,10,10,0.4);
+    opacity: 0.9;
+}
+.shola-art-carousel .carousel-control-prev{ left: 12px; }
+.shola-art-carousel .carousel-control-next{ right: 12px; }
+.shola-art-carousel .carousel-control-prev:hover,
+.shola-art-carousel .carousel-control-next:hover{
+    background: rgba(242,140,40,0.9);
+    opacity: 1;
+}
+
+/* dot indicators */
+.shola-art-carousel .carousel-indicators{
+    bottom: 12px;
+    margin-bottom: 0;
+}
+.shola-art-carousel .carousel-indicators [data-bs-target]{
+    width: 8px;
+    height: 8px;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.6);
+    background-clip: content-box;
+    border: 0;
+    margin: 0 4px;
+    opacity: 1;
+}
+.shola-art-carousel .carousel-indicators .active{
+    background-color: #F28C28;
+    transform: scale(1.25);
+    opacity: 1;
+}
 
 /*========================*/
 
@@ -8137,6 +8201,7 @@ box-shadow:
 0 20px 40px rgba(0,0,0,.1);
 
 position:relative;
+    z-index:  2;
 
 }
 
@@ -8360,13 +8425,13 @@ font-size:48px;
 
 
 /* ================================================================
-   DESIGN SYSTEM — TYPOGRAPHY  (canonical)
+   DESIGN SYSTEM � TYPOGRAPHY  (canonical)
    Lives at the END of the stylesheet so these rules normalise the
    many hard-coded px sizes above via equal-specificity selectors
    (no !important). Colours stay per-component (brand identity).
    ================================================================ */
 
-/* Headings base — family / weight / line-height / tracking unified */
+/* Headings base � family / weight / line-height / tracking unified */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 700;
@@ -8383,7 +8448,7 @@ h6 { font-size: 1rem; font-weight: 600; }   /* small value labels */
 
 p  { line-height: 1.75; }
 
-/* Page / section titles — h2 level */
+/* Page / section titles � h2 level */
 .shola-explore-title,
 .shola-why-title,
 .shola-section-heading,
@@ -8399,7 +8464,7 @@ p  { line-height: 1.75; }
     font-size: var(--fs-h2);
 }
 
-/* Footer brand statement — intentionally a step below page titles */
+/* Footer brand statement � intentionally a step below page titles */
 .shola-footer-title {
     font-size: clamp(1.4rem, 2vw, 1.9rem);
     line-height: 1.3;
@@ -8411,7 +8476,7 @@ p  { line-height: 1.75; }
     line-height: 1.15;
 }
 
-/* Card / block titles — h3 level */
+/* Card / block titles � h3 level */
 .shola-card-content h3,
 .shola-collection-content h3,
 .shola-hamper-content h3,
@@ -8424,14 +8489,14 @@ p  { line-height: 1.75; }
     font-size: var(--fs-h3);
 }
 
-/* Small card titles — h4 level */
+/* Small card titles � h4 level */
 .shola-why-card h4,
 .shola-about-card h4,
 .shola-feature-card h4 {
     font-size: var(--fs-h4);
 }
 
-/* Subtitles / leads — fixes legacy `[class*="title"]` substring match
+/* Subtitles / leads � fixes legacy `[class*="title"]` substring match
    that inflated `.x-subtitle` classes to heading sizes */
 .section-subtitle,
 .gh-art-subtitle,
@@ -8448,7 +8513,7 @@ p  { line-height: 1.75; }
     letter-spacing: normal;
 }
 
-/* Eyebrow / label / tag chips — one size, weight, tracking, casing */
+/* Eyebrow / label / tag chips � one size, weight, tracking, casing */
 .shola-explore-label,
 .shola-why-tag,
 .shola-about-tag,
@@ -8479,7 +8544,7 @@ p  { line-height: 1.75; }
     letter-spacing: 2px;
 }
 
-/* Body copy on light surfaces — one colour, size and rhythm */
+/* Body copy on light surfaces � one colour, size and rhythm */
 .shola-about-text,
 .shola-section-text,
 .shola-why-card p,
@@ -8498,7 +8563,7 @@ p  { line-height: 1.75; }
 
 
 /* ================================================================
-   DESIGN SYSTEM — BUTTONS  (canonical)
+   DESIGN SYSTEM � BUTTONS  (canonical)
    Shared pill-button foundation + per-surface colour identity.
    Consistent height, padding, type, radius, icon alignment and
    hover / focus-visible / active / disabled states everywhere.
@@ -8527,7 +8592,7 @@ p  { line-height: 1.75; }
     transition: var(--btn-transition);
 }
 
-/* Hover — one consistent lift (colours stay per-surface) */
+/* Hover � one consistent lift (colours stay per-surface) */
 .shola-contact-btn:hover,
 .shola-product-link:hover,
 .shola-wholesale-cta a:hover,
@@ -8558,7 +8623,7 @@ p  { line-height: 1.75; }
     box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
 }
 
-/* Focus — visible keyboard ring */
+/* Focus � visible keyboard ring */
 .shola-contact-btn:focus-visible,
 .shola-product-link:focus-visible,
 .shola-wholesale-cta a:focus-visible,
@@ -8567,7 +8632,7 @@ p  { line-height: 1.75; }
     box-shadow: var(--btn-focus-ring);
 }
 
-/* Selection controls — collection tabs & product selector */
+/* Selection controls � collection tabs & product selector */
 .shola-tab,
 .shola-product-selector {
     display: inline-flex;
@@ -8620,7 +8685,7 @@ button[disabled],
     box-shadow: none !important;
 }
 
-/* Mobile usability — primary CTAs become full-width targets */
+/* Mobile usability � primary CTAs become full-width targets */
 @media (max-width: 767.98px) {
 
     .shola-contact-btn,
@@ -8639,14 +8704,14 @@ button[disabled],
 
 
 /* ================================================================
-   DESIGN SYSTEM — LAYOUT & SECTION RHYTHM  (canonical)
+   DESIGN SYSTEM � LAYOUT & SECTION RHYTHM  (canonical)
    One vertical rhythm + one content rail for every main section.
-   Fluid clamp() covers phone → 4K intentionally (no breakpoint
+   Fluid clamp() covers phone ? 4K intentionally (no breakpoint
    shrinking of the desktop version).
    ================================================================ */
 
 :root {
-    --section-pad: clamp(3.5rem, 8vw, 6rem);   /* 56px → 96px */
+    --section-pad: clamp(3.5rem, 8vw, 6rem);   /* 56px ? 96px */
     --container-gutter: calc(var(--bs-gutter-x, 1.5rem) * 0.5);
 
     /* Content rail mirrors Bootstrap .container EXACTLY, so custom
@@ -8688,7 +8753,7 @@ button[disabled],
     padding-inline: var(--container-gutter);
 }
 
-/* Card padding fallback — zero specificity (:where), so it only
+/* Card padding fallback � zero specificity (:where), so it only
    fills genuine gaps and always yields to component paddings */
 :where(.shola-why-card,
        .shola-collection-card,
@@ -8702,7 +8767,7 @@ button[disabled],
 }
 
 /* --------------------------------------------------------------
-   Responsive stacking — tablet (768–991px) collapses together
+   Responsive stacking � tablet (768�991px) collapses together
    with the rest of the lg grid instead of shrinking the desktop
    two-column layout.
    -------------------------------------------------------------- */
@@ -8725,7 +8790,7 @@ button[disabled],
 }
 
 /* --------------------------------------------------------------
-   Small phones — soften overlaps/compacts deliberately
+   Small phones � soften overlaps/compacts deliberately
    -------------------------------------------------------------- */
 @media (max-width: 575.98px) {
 
@@ -8745,13 +8810,13 @@ button[disabled],
 
 
 /* ================================================================
-   DESIGN SYSTEM — CARDS & GRIDS  (canonical)
+   DESIGN SYSTEM � CARDS & GRIDS  (canonical)
    One geometry language for every repeated card surface:
    radius, padding, shadow, hover lift, chip shape, grid gaps.
    Per-surface backgrounds/borders (glass vs solid) stay intact.
    ================================================================ */
 
-/* Standard solid-interior cards — shared geometry */
+/* Standard solid-interior cards � shared geometry */
 .shola-collection-card,
 .shola-why-card,
 .shola-feature-card,
@@ -8765,7 +8830,7 @@ button[disabled],
     box-shadow: var(--shadow-1);
 }
 
-/* Media-frame cards (full-bleed image top) — frame normalized only;
+/* Media-frame cards (full-bleed image top) � frame normalized only;
    their internal text blocks own the padding */
 .shola-collection-item,
 .shola-wholesale-card {
@@ -8822,7 +8887,7 @@ button[disabled],
 
 
 /* ================================================================
-   DESIGN SYSTEM — FOOTER  (canonical)
+   DESIGN SYSTEM � FOOTER  (canonical)
    Left-aligned columns at every width; brand / links / contact
    share the site rail (.container); consistent chips & credit.
    ================================================================ */
@@ -8860,7 +8925,7 @@ button[disabled],
 
 
 /* ================================================================
-   DESIGN SYSTEM — IMAGES, ICONS & FORMS  (canonical)
+   DESIGN SYSTEM � IMAGES, ICONS & FORMS  (canonical)
    Ratio-locked media, squish-proof icons, one accessible form kit.
    ================================================================ */
 
@@ -8943,7 +9008,7 @@ select.shola-input {
 input[type="checkbox"].shola-check { border-radius: 6px; }
 input[type="radio"].shola-check { border-radius: 50%; }
 
-/* Validation states — native, JS-free */
+/* Validation states � native, JS-free */
 .shola-input:user-invalid,
 .shola-input.is-invalid,
 .shola-input[aria-invalid="true"] {
@@ -8979,7 +9044,7 @@ input[type="radio"].shola-check { border-radius: 50%; }
 
 
 /* ================================================================
-   MOBILE QA HARDENING  (canonical — keep last)
+   MOBILE QA HARDENING  (canonical � keep last)
    Dedicated pass for 320 / 360 / 375 / 390 / 414 / 480 px.
    Readability floors, touch targets, dense-block compaction,
    long-string safety. Sits at EOF so its phone rules win the
@@ -9042,7 +9107,7 @@ input[type="radio"].shola-check { border-radius: 50%; }
 
 
 /* ================================================================
-   TABLET & DESKTOP QA  (canonical — keep last)
+   TABLET & DESKTOP QA  (canonical � keep last)
    ================================================================ */
 
 /* Header content rides the same stepped rail as page sections,
@@ -9092,3 +9157,81 @@ input[type="radio"].shola-check { border-radius: 50%; }
     font-size: 12px !important;
 }
 
+.maps-section {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 50px 30px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    box-sizing: border-box;
+  }
+
+  .map-card {
+    background: #fff;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .map-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
+  }
+
+  .map-frame {
+    width: 100%;
+    height: 450px;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .map-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .maps-section {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 30px 16px;
+    }
+
+    .map-card {
+      border-radius: 16px;
+      padding: 8px;
+    }
+
+    .map-frame {
+      height: 350px;
+      border-radius: 11px;
+    }
+  }
+
+  .painting-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+
+@media (max-width: 768px) {
+    .painting-name {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

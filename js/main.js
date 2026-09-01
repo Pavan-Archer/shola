@@ -97,9 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
             "Raw Pure Honey",
             "Single-Origin Aromatic Pepper",
             "Freshly Packed Coffee Powder",
-            "Matching Wooden Bowl",
-            "Wooden Spoon",
-            "Traditional Wooden Honey Dipper",
+            "Matching Bowl",
+            "Nuts Tube",
           ],
         },
 
@@ -116,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "Authentic Premium Coffee Powder",
             "Traditional Brass Coffee Cup & Saucer",
             "Hand-Poured Coffee-Scented Soy Candle",
-            "Wooden Spoon",
+            "Nuts Tube",
           ],
         },
       ],
@@ -142,8 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "Pure Raw Honey",
             "Premium Roasted Coffee",
             "Whole Black Pepper",
-            "Wooden Spoon",
-            "Traditional Honey Dipper",
+            "Nuts Tube",
           ],
         },
       ],
@@ -202,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
           features: [
             "Rich Coffee Powder",
             "Whole Black Pepper",
-            "Handcrafted Wooden Spoon",
+            "Nuts Tube",
             "Personalized Message Card",
           ],
         },
@@ -224,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
           description:
             "A simple and thoughtful gift designed to make a big impression—perfect for celebrations, giveaways, and meaningful thank-you gestures.",
 
-          features: ["Raw Honey", "Wooden Honey Dipper", "Personalized Note"],
+          features: ["Raw Honey", "Nuts Tube", "Personalized Note"],
         },
       ],
     },
@@ -461,4 +459,42 @@ document.addEventListener("DOMContentLoaded", function () {
       prevImage();
     }
   });
+});
+/* ------------------------------------------
+   SHOLA ART CARD CAROUSEL (Bootstrap-based)
+   Swipe support (Bootstrap 5.0 has none built-in)
+------------------------------------------ */
+document.addEventListener("DOMContentLoaded", function () {
+  var carousel = document.querySelector(".shola-art-carousel");
+  if (!carousel || !window.bootstrap || !bootstrap.Carousel) return;
+
+  // Bootstrap auto-initializes via data-bs-ride; reuse that instance
+  var instance = bootstrap.Carousel.getOrCreateInstance(carousel, { interval: 4500 });
+
+  var startX = 0, startY = 0, drag = false;
+
+  carousel.addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    drag = true;
+  }, { passive: true });
+
+  carousel.addEventListener("touchmove", function (e) {
+    if (!drag || e.touches.length !== 1) return;
+    var dx = e.touches[0].clientX - startX;
+    var dy = e.touches[0].clientY - startY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  carousel.addEventListener("touchend", function (e) {
+    if (!drag || !e.changedTouches.length) return;
+    drag = false;
+    var dx = e.changedTouches[0].clientX - startX;
+    var dy = e.changedTouches[0].clientY - startY;
+    if (Math.abs(dx) < 30 || Math.abs(dx) < Math.abs(dy)) return;
+    if (dx < 0) { instance.next(); } else { instance.prev(); }
+  }, { passive: true });
 });

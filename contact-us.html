@@ -89,7 +89,7 @@
 
                         </p>
 
-                        <div class="shola-contact-item">
+                        <!-- <div class="shola-contact-item">
 
                             <div class="shola-contact-icon">
 
@@ -107,13 +107,15 @@
 
                             </div>
 
-                        </div>
+                        </div> -->
 
 
 
                         <div class="shola-contact-item">
 
-                            <div class="shola-contact-icon">
+                            <div class="shola-contact-icon"
+                                onclick="window.open('mailto:info@sholaenterprises.com','_self')"
+                                style="cursor:pointer;">
 
                                 <i class="fa fa-envelope"></i>
 
@@ -135,9 +137,10 @@
 
                         <div class="shola-contact-item">
 
-                            <div class="shola-contact-icon">
+                            <div class="shola-contact-icon" onclick="window.open('https://wa.me/919880105843','_blank')"
+                                style="cursor:pointer;">
 
-                                <i class="fab fa-whatsapp"></i>
+                                <i class="fab fa-whatsapp" href="https://wa.me/919880105843"></i>
 
                             </div>
 
@@ -145,8 +148,8 @@
 
                                 <span>WhatsApp</span>
 
-                                <h6>
-                                    +91 9620#######
+                                <h6 style="color: #fff !important;">
+                                    +91 82772 58057 / +91 9880105843
                                 </h6>
 
                             </div>
@@ -157,9 +160,11 @@
 
                         <div class="shola-contact-item">
 
-                            <div class="shola-contact-icon">
+                            <div class="shola-contact-icon"
+                                onclick="window.open('https://www.instagram.com/sholaenterprises26','_blank')"
+                                style="cursor:pointer;">
 
-                                <i class="fab fa-instagram" href="https://www.instagram.com/sholaenterprises26" target="_blank"></i>
+                                <i class="fab fa-instagram"></i>
 
                             </div>
 
@@ -168,7 +173,7 @@
                                 <span>Instagram</span>
 
                                 <h6>
-                                    @shola#####
+                                    @sholaenterprises26
                                 </h6>
 
                             </div>
@@ -195,9 +200,8 @@
 
                                     <label class="visually-hidden" for="contact-name">Name</label>
 
-                                    <input type="text" id="contact-name" name="name"
-                                        class="form-control shola-input" placeholder="Name"
-                                        autocomplete="name" required
+                                    <input type="text" id="contact-name" name="name" class="form-control shola-input"
+                                        placeholder="Name" autocomplete="name" required
                                         aria-describedby="contact-name-msg">
 
                                     <p class="shola-field-msg" id="contact-name-msg">
@@ -225,9 +229,8 @@
 
                                     <label class="visually-hidden" for="contact-phone">Phone</label>
 
-                                    <input type="tel" id="contact-phone" name="phone"
-                                        class="form-control shola-input" placeholder="Phone"
-                                        autocomplete="tel" inputmode="tel" required
+                                    <input type="tel" id="contact-phone" name="phone" class="form-control shola-input"
+                                        placeholder="Phone" autocomplete="tel" inputmode="tel" required
                                         aria-describedby="contact-phone-msg">
 
                                     <p class="shola-field-msg" id="contact-phone-msg">
@@ -252,9 +255,8 @@
 
                                 <label class="visually-hidden" for="contact-message">Message</label>
 
-                                <textarea rows="6" id="contact-message" name="message"
-                                    class="form-control shola-input" placeholder="Message..."
-                                    required aria-describedby="contact-message-msg"></textarea>
+                                <textarea rows="6" id="contact-message" name="message" class="form-control shola-input"
+                                    placeholder="Message..." required aria-describedby="contact-message-msg"></textarea>
 
                                 <p class="shola-field-msg" id="contact-message-msg">
                                     Please write a short message.
@@ -281,6 +283,27 @@
 
         </div>
 
+    </section>
+
+    <section class="maps-section">
+       
+        <div class="map-card">
+            <div class="map-frame">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d15551.342408418246!2d77.5031209!3d12.9823646!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDU4JzU2LjUiTiA3N8KwMzAnMjguNiJF!5e0!3m2!1sen!2sin!4v1788262570733!5m2!1sen!2sin"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </div>
+
+        <div class="map-card">
+            <div class="map-frame">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.0112186375513!2d77.5306944!3d12.906999999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDU0JzI1LjIiTiA3N8KwMzEnNTAuNSJF!5e0!3m2!1sen!2sin!4v1788262613276!5m2!1sen!2sin"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </div>
     </section>
 
     <div id="footer"></div>

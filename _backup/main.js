@@ -97,9 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
             "Raw Pure Honey",
             "Single-Origin Aromatic Pepper",
             "Freshly Packed Coffee Powder",
-            "Matching Wooden Bowl",
-            "Wooden Spoon",
-            "Traditional Wooden Honey Dipper",
+            "Matching Bowl",
+            "Nuts Tube",
           ],
         },
 
@@ -116,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "Authentic Premium Coffee Powder",
             "Traditional Brass Coffee Cup & Saucer",
             "Hand-Poured Coffee-Scented Soy Candle",
-            "Wooden Spoon",
+            "Nuts Tube",
           ],
         },
       ],
@@ -142,8 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "Pure Raw Honey",
             "Premium Roasted Coffee",
             "Whole Black Pepper",
-            "Wooden Spoon",
-            "Traditional Honey Dipper",
+            "Nuts Tube",
           ],
         },
       ],
@@ -202,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
           features: [
             "Rich Coffee Powder",
             "Whole Black Pepper",
-            "Handcrafted Wooden Spoon",
+            "Nuts Tube",
             "Personalized Message Card",
           ],
         },
@@ -224,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
           description:
             "A simple and thoughtful gift designed to make a big impression—perfect for celebrations, giveaways, and meaningful thank-you gestures.",
 
-          features: ["Raw Honey", "Wooden Honey Dipper", "Personalized Note"],
+          features: ["Raw Honey", "Nuts Tube", "Personalized Note"],
         },
       ],
     },
