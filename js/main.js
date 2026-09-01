@@ -115,7 +115,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "Authentic Premium Coffee Powder",
             "Traditional Brass Coffee Cup & Saucer",
             "Hand-Poured Coffee-Scented Soy Candle",
-            "Nuts Tube",
           ],
         },
       ],
@@ -166,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
           features: [
             "Premium Raw Honey",
             "Whole Black Pepper",
-            "Traditional Wooden Honey Dripper",
+            "Nuts Tube",
             "Personalized Message Card",
           ],
         },
@@ -183,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
           features: [
             "Rich Coffee Powder",
             "Premium Honey",
-            "Traditional Wooden Honey Dripper",
+            "Nuts Tube",
             "Personalized Message Card",
           ],
         },
