@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           features: [
             "Authentic Premium Coffee Powder",
-            "Traditional Brass Coffee Cup & Saucer",
+            "Brass coffee Dabara set",
             "Hand-Poured Coffee-Scented Soy Candle",
             "Nuts Tube",
           ],

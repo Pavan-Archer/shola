@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           features: [
             "Authentic Premium Coffee Powder",
-            "Traditional Brass Coffee Cup & Saucer",
+            "Traditional Brass Coffee Dabara Set",
             "Hand-Poured Coffee-Scented Soy Candle",
           ],
         },
@@ -496,4 +496,26 @@ document.addEventListener("DOMContentLoaded", function () {
     if (Math.abs(dx) < 30 || Math.abs(dx) < Math.abs(dy)) return;
     if (dx < 0) { instance.next(); } else { instance.prev(); }
   }, { passive: true });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const collection = new URLSearchParams(
+        window.location.search
+    ).get("collection");
+
+    if (collection === null) return;
+
+    setTimeout(function () {
+
+        const tab = document.querySelector(
+            `.shola-tab[data-collection="${collection}"]`
+        );
+
+        if (tab) {
+            tab.click();
+        }
+
+    }, 100);
+
 });
