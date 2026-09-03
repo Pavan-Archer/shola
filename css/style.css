@@ -143,6 +143,90 @@
         transform: translateY(-3px);
     }
 }
+
+/* =========================
+   Instagram Floating Button
+   ========================= */
+.instagram-float {
+    position: fixed;
+    right: 30px;
+    bottom: 160px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(220, 39, 67, 0.35);
+    text-decoration: none;
+    z-index: 3000;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.instagram-float__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.instagram-float__icon svg {
+    display: block;
+    width: 28px;
+    height: 28px;
+    transition: transform 0.3s ease;
+}
+
+.instagram-float__text {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    max-width: 0;
+    opacity: 0;
+    padding-left: 0;
+    letter-spacing: 0.02em;
+    transition: max-width 0.3s ease, opacity 0.3s ease, padding-left 0.3s ease;
+    overflow: hidden;
+}
+
+.instagram-float:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 10px 28px rgba(220, 39, 67, 0.45);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.instagram-float:hover .instagram-float__icon svg {
+
+    transform: scale(1.1);
+}
+
+.instagram-float:hover .instagram-float__text {
+    max-width: 140px;
+    opacity: 1;
+    padding-left: 8px;
+    /* tooltip for right-side button */
+}
+
+/* Keep it circular icon only on mobile/tablets */
+@media (max-width: 991.98px) {
+    .instagram-float:hover .instagram-float__text {
+        max-width: 0;
+        opacity: 0;
+        padding-left: 0;
+    }
+    .instagram-float:hover {
+        transform: translateY(-3px);
+    }
+}
+
 .my-6 {
     margin-top: 6rem;
     margin-bottom: 6rem;
@@ -9291,4 +9375,40 @@ input[type="radio"].shola-check { border-radius: 50%; }
   .collection-heading::after {
     margin-left: 9px;
   }
+}
+
+.ashwitha-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.ashwitha-social {
+  width: 21px;
+  height: 21px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.ashwitha-social svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.ashwitha-social.instagram {
+  color: #ff9a2e;
+}
+
+.ashwitha-social.whatsapp {
+  color: #25D366;
+}
+
+.ashwitha-social:hover {
+  transform: scale(1.1);
 }

@@ -17,9 +17,9 @@
   // Fixed Navbar — simplified to avoid layout shifts
   $(window).on("scroll resize", function () {
     if ($(this).scrollTop() > 45) {
-      $(".fixed-top").addClass("bg-dark shadow");
+      $(".fixed-top").addClass("bg-white shadow");
     } else {
-      $(".fixed-top").removeClass("bg-dark shadow");
+      $(".fixed-top").removeClass("bg-white shadow");
     }
   });
 
@@ -113,8 +113,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
           features: [
             "Authentic Premium Coffee Powder",
-            "Traditional Brass Coffee Dabara Set",
+            "Brass coffee Dabara set",
             "Hand-Poured Coffee-Scented Soy Candle",
+            "Nuts Tube",
           ],
         },
       ],
@@ -165,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
           features: [
             "Premium Raw Honey",
             "Whole Black Pepper",
-            "Nuts Tube",
+            "Traditional Wooden Honey Dripper",
             "Personalized Message Card",
           ],
         },
@@ -182,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
           features: [
             "Rich Coffee Powder",
             "Premium Honey",
-            "Nuts Tube",
+            "Traditional Wooden Honey Dripper",
             "Personalized Message Card",
           ],
         },
@@ -458,64 +459,4 @@ document.addEventListener("DOMContentLoaded", function () {
       prevImage();
     }
   });
-});
-/* ------------------------------------------
-   SHOLA ART CARD CAROUSEL (Bootstrap-based)
-   Swipe support (Bootstrap 5.0 has none built-in)
------------------------------------------- */
-document.addEventListener("DOMContentLoaded", function () {
-  var carousel = document.querySelector(".shola-art-carousel");
-  if (!carousel || !window.bootstrap || !bootstrap.Carousel) return;
-
-  // Bootstrap auto-initializes via data-bs-ride; reuse that instance
-  var instance = bootstrap.Carousel.getOrCreateInstance(carousel, { interval: 4500 });
-
-  var startX = 0, startY = 0, drag = false;
-
-  carousel.addEventListener("touchstart", function (e) {
-    if (e.touches.length !== 1) return;
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    drag = true;
-  }, { passive: true });
-
-  carousel.addEventListener("touchmove", function (e) {
-    if (!drag || e.touches.length !== 1) return;
-    var dx = e.touches[0].clientX - startX;
-    var dy = e.touches[0].clientY - startY;
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-
-  carousel.addEventListener("touchend", function (e) {
-    if (!drag || !e.changedTouches.length) return;
-    drag = false;
-    var dx = e.changedTouches[0].clientX - startX;
-    var dy = e.changedTouches[0].clientY - startY;
-    if (Math.abs(dx) < 30 || Math.abs(dx) < Math.abs(dy)) return;
-    if (dx < 0) { instance.next(); } else { instance.prev(); }
-  }, { passive: true });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const collection = new URLSearchParams(
-        window.location.search
-    ).get("collection");
-
-    if (collection === null) return;
-
-    setTimeout(function () {
-
-        const tab = document.querySelector(
-            `.shola-tab[data-collection="${collection}"]`
-        );
-
-        if (tab) {
-            tab.click();
-        }
-
-    }, 100);
-
 });
